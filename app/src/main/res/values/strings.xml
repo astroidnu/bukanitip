@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Buka Nitip</string>
+    <string name="network_error">Failed contact server, please try again</string>
 </resources>
