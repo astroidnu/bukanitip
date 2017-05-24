@@ -1,4 +1,19 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'me.tatarka.retrolambda'
+
+
+def AAVersion = '4.0.0'
+
+dependencies {
+    apt "org.androidannotations:androidannotations:$AAVersion"
+    compile "org.androidannotations:androidannotations-api:$AAVersion"
+    apt 'com.google.dagger:dagger-compiler:2.0.1'
+    compile 'com.google.dagger:dagger:2.0.1'
+    provided 'javax.annotation:jsr250-api:1.0'
+}
+
 
 android {
     compileSdkVersion 25
@@ -11,20 +26,90 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     buildTypes {
         release {
+            multiDexEnabled true
             minifyEnabled false
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug{
+            multiDexEnabled true
+            minifyEnabled true
+            useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
+
+
+//greendao {
+//    targetGenDir 'src/main/java'
+//    schemaVersion 1
+//}
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+    testCompile 'org.robolectric:robolectric:3.3.2'
+
+    //Debugging + unitTesting
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3.1'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'
+    repositories { jcenter() }
+//    dependencies { testCompile "org.mockito:mockito-core:1.+" }
+
+
+    //Custom Font
+    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
+
+    //Material Bottom Navigation
+    compile 'com.roughike:bottom-bar:2.0.2'
+
+    //Retrofit
+    compile retrofitDependencies.retrofit
+    compile retrofitDependencies.converterGson
+    compile retrofitDependencies.adapterRxjava
+    compile retrofitDependencies.converterScalars
+    compile okhttpDependencies.logginInterceptor
+
+
+    //Job Management
+    compile jobDependencies.jobqueue
+    compile reactiveDependencies.rxandroid
+    //Android Material Design
+    compile androidDependencies.appcompat
+    compile androidDependencies.design
+    compile androidDependencies.recyclerview
+    compile androidDependencies.percent
+    compile androidDependencies.cardview
+    compile androidDependencies.multidex
+    //GreenDAO
+    compile greenRobotDependencies.greendao
+    compile greenRobotDependencies.greendaoGenerator
+    compile greenRobotDependencies.eventBus
+
+    compile googleServiceDependencies.playService
+    releaseCompile googleServiceDependencies.firebaseCore
+    releaseCompile googleServiceDependencies.firebaseCrash
+    compile googleServiceDependencies.firebaseMessaging
+
+    compile 'com.github.clans:fab:1.6.4'
+    compile 'com.parse.bolts:bolts-android:1.1.4'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    debugCompile 'com.amitshekhar.android:debug-db:0.4.0'
 }
+//
+//
+//apply plugin: 'com.google.gms.google-services'
+

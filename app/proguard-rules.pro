@@ -23,3 +23,31 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+-dontwarn org.greenrobot.greendao.AbstractDao.**
+-dontwarn org.greenrobot.greendao.AbstractDaoSession.**
+-dontwarn org.greenrobot.greendao.query.**
+
+# If you do not use SQLCipher:
+-dontwarn org.greenrobot.greendao.database.**
+# If you do not use Rx:
+-dontwarn org.greenrobot.greendao.rx.**
+
+-ignorewarnings
+-keep @interface android.support.annotation.Keep
+-keep @android.support.annotation.Keep class *
+-keepclasseswithmembers class * {
+  @android.support.annotation.Keep <fields>;
+}
+-keepclasseswithmembers class * {
+  @android.support.annotation.Keep <methods>;
+}
+-keepattributes EnclosingMethod
+-keepattributes InnerClasses
+-dontwarn InnerClasses
+-dontoptimize
+-keepresourcexm

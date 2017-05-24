@@ -1,0 +1,96 @@
+ext{
+    /*Version*/
+    junitVersion = '4.12'
+    mockitoVersion = '2.7.6'
+    robolectricVersion = '3.2.2'
+    espressoVersion = '2.2.2'
+    squareVersion = "2.3.0"
+    googleServiceVersion = '9.6.0'
+    AAVersion = '4.0.0'
+    daggerVersion = '2.0.1'
+    javaxAnnotationVersion = '1.0'
+    androidVersion = '25.3.1'
+    leakcanaryVersion = '1.3.1'
+    greenRobotVersion = '3.2.0'
+    multiDexVersion = '1.0.0'
+    okHttpVersion = '3.3.1'
+    rxAndroiVersion = '1.1.0'
+    roboVersion = '2.2.0'
+    jobqueueVersion = '1.3.5'
+    picassoVersion = '2.5.2'
+    gsonVersion = '2.4'
+    debugDbVersion = '0.4.0'
+    imageCompressorVersion = '1.0.4'
+    eventBusVersion = '3.0.0'
+    bottomNavVersion = '2.0.2'
+
+    /*Package*/
+    AAPackage = 'org.androidannotations'
+    googleServicePackage = 'com.google.android.gms'
+    squarePackage = 'com.squareup.retrofit2'
+    junitPackage = 'junit'
+    mockitoPackage = 'org.mockito'
+    robolectricPackage = 'org.robolectric'
+    espressoPackage = 'com.android.support.test.espresso'
+    okhttpPackage = 'com.squareup.okhttp3'
+    leakcanaryPackage = 'com.squareup.leakcanary'
+    androidPackage = 'com.android.support'
+    roboPackage = 'com.github.johnkil.android-robototextview'
+    firebasePackage = 'com.google.firebase'
+    greenRobotPackage= 'org.greenrobot'
+    jobqueuePackage = 'com.birbit'
+    rxAndroidPackage = 'io.reactivex'
+    gsonPackage = 'com.google.code.gson'
+    picassoPackage = 'com.squareup.picasso'
+    debugDbPackage = 'com.amitshekhar.android'
+    imageCompressionPackage = 'id.zelory'
+    daggerPackage = 'com.google.dagger'
+    AAPackage = 'org.androidannotations'
+    jsr250Package = 'javax.annotation'
+    bottomNavPackage = 'com.roughike'
+
+    bottomNavDependencies = [bottomNav :buildDependency(bottomNavPackage, 'bottom-bar', bottomNavVersion)]
+    daggerDependencies = [dagger : buildDependency(daggerPackage, 'dagger', daggerVersion),
+                          daggerCompiler : buildDependency(daggerPackage, 'dagger-compiler', daggerVersion),]
+    androidDependencies = [appcompat : buildDependency(androidPackage, 'appcompat-v7', androidVersion),
+                           design : buildDependency(androidPackage, 'design', androidVersion),
+                           recyclerview : buildDependency(androidPackage, 'recyclerview-v7', androidVersion),
+                           percent : buildDependency(androidPackage, 'percent', androidVersion),
+                           cardview : buildDependency(androidPackage, 'cardview-v7', androidVersion),
+                           multidex : buildDependency(androidPackage, 'multidex', multiDexVersion),]
+    retrofitDependencies = [retrofit : buildDependency(squarePackage, 'retrofit', squareVersion),
+                            converterGson : buildDependency(squarePackage, 'converter-gson', squareVersion),
+                            adapterRxjava : buildDependency(squarePackage, 'adapter-rxjava', squareVersion),
+                            converterScalars : buildDependency(squarePackage, 'converter-scalars', squareVersion)]
+    okhttpDependencies = [logginInterceptor : buildDependency(okhttpPackage, 'logging-interceptor', okHttpVersion)]
+    AADependencies = [annotations : buildDependency(AAPackage, 'androidannotations', AAVersion),
+                      androidannotationsApi : buildDependency(AAPackage, 'androidannotations-api', AAVersion)]
+    javaxDependencies = [jsr250 : buildDependency(jsr250Package,'jsr250-api', javaxAnnotationVersion)]
+    roboDependencies = [robotextView : buildDependency(roboPackage, 'robototextview', roboVersion)]
+    jobDependencies = [jobqueue : buildDependency(jobqueuePackage, 'android-priority-jobqueue', jobqueueVersion)]
+    picassoDependencies = [picasso : buildDependency(picassoPackage, 'picasso', picassoVersion)]
+    gsonDependencies = [gson : buildDependency(gsonPackage, 'gson', gsonVersion)]
+    imageCompressionDependencies = [imageCompression : buildDependency(imageCompressionPackage, 'compressor', imageCompressorVersion)]
+    debugDbDependencies = [debug : buildDependency(debugDbPackage, 'debug-db', debugDbVersion)]
+    leakCanaryDependencies = [leakCanaryAndroid : buildDependency(leakcanaryPackage, 'leakcanary-android', leakcanaryVersion),
+                              leakCanaryAndroidNoOP : buildDependency(leakcanaryPackage, 'leakcanary-android-no-op', leakcanaryVersion),]
+    reactiveDependencies = [rxandroid : buildDependency(rxAndroidPackage, 'rxandroid', rxAndroiVersion)]
+    testingDependencies = [junit      : buildDependency(junitPackage, 'junit', junitVersion),
+                           mockito    : buildDependency(mockitoPackage, 'mockito-core', mockitoVersion),
+                           robolectric: buildDependency(robolectricPackage, 'robolectric', robolectricVersion),
+                           espresso : buildDependency(espressoPackage,'espresso-core', espressoVersion )]
+    greenRobotDependencies = [greendao : buildDependency(greenRobotPackage,'greendao', greenRobotVersion ),
+                              greendaoGenerator : buildDependency(greenRobotPackage,'greendao-generator', greenRobotVersion ),
+                              eventBus : buildDependency(greenRobotPackage,'eventbus', eventBusVersion )]
+    googleServiceDependencies = [playService : buildDependency(googleServicePackage, 'play-services', googleServiceVersion),
+                                 playServiceAnalytic : buildDependency(googleServicePackage, 'play-services-analytics', googleServiceVersion),
+                                 playServiceAuth : buildDependency(googleServicePackage, 'play-services-auth', googleServiceVersion),
+                                 playServicePlus : buildDependency(googleServicePackage, 'play-services-plus', googleServiceVersion),
+                                 firebaseCore : buildDependency(firebasePackage, 'firebase-core', googleServiceVersion),
+                                 firebaseCrash : buildDependency(firebasePackage, 'firebase-crash', googleServiceVersion),
+                                 firebaseMessaging : buildDependency(firebasePackage, 'firebase-messaging', googleServiceVersion),]
+}
+
+String buildDependency(String pack, String dependency, String version) {
+    return "${pack}:${dependency}:${version}"
+}
