@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.Toolbar;
 
+import com.roughike.bottombar.BottomBar;
+
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.EViewGroup;
@@ -18,6 +20,8 @@ import dietbisabesok.com.bukanitip.R;
 public class HomeScreenView extends CoordinatorLayout {
     @ViewById(R.id.home_toolbar)
     Toolbar mToolbar;
+    @ViewById(R.id.home_bottom_bar)
+    BottomBar mBottomBar;
 
     @AfterViews
     void init(){
