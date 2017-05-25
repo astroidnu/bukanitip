@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="dietbisabesok.com.bukanitip.activity.login.LoginScreenActivity">
+    <ImageView
+        android:padding="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/buka_nitip"/>
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="8dp"
+            android:id="@+id/input_layout_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorLightGrey"
+                android:id="@+id/input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="@string/hint_username" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorLightGrey"
+                android:id="@+id/input_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/hint_password" />
+        </android.support.design.widget.TextInputLayout>
+        <Button
+            android:textSize="20dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login"/>
+    </LinearLayout>
+
+</RelativeLayout>

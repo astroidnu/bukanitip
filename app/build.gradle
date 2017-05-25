@@ -42,7 +42,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
-        debug{
+        debug {
             multiDexEnabled true
             minifyEnabled true
             useProguard true
@@ -50,7 +50,6 @@ android {
         }
     }
 }
-
 
 //greendao {
 //    targetGenDir 'src/main/java'
@@ -72,7 +71,6 @@ dependencies {
     repositories { jcenter() }
 //    dependencies { testCompile "org.mockito:mockito-core:1.+" }
 
-
     //Custom Font
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
 
@@ -85,7 +83,6 @@ dependencies {
     compile retrofitDependencies.adapterRxjava
     compile retrofitDependencies.converterScalars
     compile okhttpDependencies.logginInterceptor
-
 
     //Job Management
     compile jobDependencies.jobqueue

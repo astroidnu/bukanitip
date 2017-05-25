@@ -1,12 +1,20 @@
 package dietbisabesok.com.bukanitip.activity.login;
 
-import dagger.Component;
-import dietbisabesok.com.bukanitip.di.component.AppComponent;
+import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
 
 /**
  * Created by ibnumuzzakkir on 5/24/17.
  */
-@LoginScreenScope
-@Component(dependencies = {AppComponent.class})
-public interface LoginScreenPresenter {
+public class LoginScreenPresenter extends ViewPresenter<LoginScreenView> {
+    private LoginScreenActivity mActivity;
+
+    public LoginScreenPresenter(LoginScreenActivity loginScreenActivity) {
+        mActivity = loginScreenActivity;
+    }
+
+    @Override
+    public void onLoad(){
+        super.onLoad();
+
+    }
 }

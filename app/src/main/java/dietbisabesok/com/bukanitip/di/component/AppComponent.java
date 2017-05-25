@@ -24,9 +24,10 @@ public interface AppComponent extends IAppComponent {
 
     final static class Initializer {
         public static AppComponent init(BukaNitipApp app){
-            File cacheFile = new File(app.getCacheDir(), "responses");
+            File cacheFile = new File(app.getCacheDir(), "api_cache");
             return DaggerAppComponent.builder()
                     .appModule(new AppModule(app))
+                    .networkModule(new NetworkModule(cacheFile))
                     .build();
         }
     }

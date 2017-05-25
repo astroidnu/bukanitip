@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Buka Nitip</string>
     <string name="network_error">Failed contact server, please try again</string>
+    <string name="hint_username">Email / Username</string>
+    <string name="hint_password">Password</string>
+    <string name="login">Login</string>
 </resources>
