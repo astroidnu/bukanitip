@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 public class UIHelper {
 
-    public static void showToastMessage(Context context, String msg){
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+    public static Toast showToastMessage(Context context, String msg){
+        return Toast.makeText(context, msg, Toast.LENGTH_LONG);
     }
 
     public static ProgressDialog showProgressDialog(Context context){

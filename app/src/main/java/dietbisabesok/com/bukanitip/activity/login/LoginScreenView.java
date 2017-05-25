@@ -6,6 +6,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TextInputLayout;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -32,12 +33,17 @@ public class LoginScreenView extends CoordinatorLayout {
     TextInputLayout mLayoutPassword;
 
     public ProgressDialog mProgressDialog;
+    private Toast mToast;
 
     @AfterViews
     void init(){
         mProgressDialog = UIHelper.showProgressDialog(getContext());
+
     }
 
+    public Toast setToastMsg(String msg){
+        return UIHelper.showToastMessage(getContext(), msg);
+    }
     public LoginScreenView(Context context) {
         super(context);
     }

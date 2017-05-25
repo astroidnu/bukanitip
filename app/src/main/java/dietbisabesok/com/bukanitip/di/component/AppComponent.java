@@ -15,6 +15,7 @@ import dietbisabesok.com.bukanitip.di.module.NetworkModule;
 import dietbisabesok.com.bukanitip.di.module.UserModule;
 import dietbisabesok.com.bukanitip.di.scope.ApplicationScope;
 import dietbisabesok.com.bukanitip.network.NetworkService;
+import dietbisabesok.com.bukanitip.session.LoginSession;
 
 /**
  * Created by ibnumuzzakkir on 5/24/17.
@@ -38,6 +39,7 @@ public interface AppComponent extends IAppComponent {
 
     Application getApplication();
     Gson gson();
+    LoginSession loginSession();
     NetworkService networkService();
 
     /*API Services*/
