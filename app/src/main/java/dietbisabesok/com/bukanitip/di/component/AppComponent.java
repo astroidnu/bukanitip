@@ -2,15 +2,19 @@ package dietbisabesok.com.bukanitip.di.component;
 
 import android.app.Application;
 
+import com.google.gson.Gson;
+
 import java.io.File;
 
 import dagger.Component;
+import dietbisabesok.com.bukanitip.activity.login.service.LoginService;
 import dietbisabesok.com.bukanitip.app.BukaNitipApp;
 import dietbisabesok.com.bukanitip.di.module.AppModule;
 import dietbisabesok.com.bukanitip.di.module.AppUIModule;
 import dietbisabesok.com.bukanitip.di.module.NetworkModule;
 import dietbisabesok.com.bukanitip.di.module.UserModule;
 import dietbisabesok.com.bukanitip.di.scope.ApplicationScope;
+import dietbisabesok.com.bukanitip.network.NetworkService;
 
 /**
  * Created by ibnumuzzakkir on 5/24/17.
@@ -33,4 +37,9 @@ public interface AppComponent extends IAppComponent {
     }
 
     Application getApplication();
+    Gson gson();
+    NetworkService networkService();
+
+    /*API Services*/
+    LoginService loginService();
 }

@@ -10,5 +10,5 @@ public class CommonResponse {
     @SerializedName("message")
     public String message;
     @SerializedName("status")
-    public int status;
+    public String status;
 }

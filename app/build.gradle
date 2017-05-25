@@ -27,8 +27,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "int", "CACHETIME", "432000" // 5days
         buildConfigField "int", "LIMIT", "100"
-        buildConfigField "String", "COUNTRY", "\"EN\""
-        buildConfigField "String", "BASEURL", "\"http://188.166.190.210/API_SS_NEW/public/index.php/\""
+        buildConfigField "String", "BASEURL", "\"https://api.bukalapak.com/v2/\""
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

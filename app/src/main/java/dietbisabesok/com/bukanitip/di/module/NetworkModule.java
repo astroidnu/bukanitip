@@ -8,8 +8,11 @@ import java.util.concurrent.TimeUnit;
 import dagger.Module;
 import dagger.Provides;
 import dietbisabesok.com.bukanitip.BuildConfig;
+import dietbisabesok.com.bukanitip.activity.login.service.LoginService;
 import dietbisabesok.com.bukanitip.di.scope.ApplicationScope;
+import dietbisabesok.com.bukanitip.network.NetworkService;
 import okhttp3.Cache;
+import okhttp3.Credentials;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -68,7 +71,7 @@ public class NetworkModule {
 
 
         return new Retrofit.Builder()
-                .baseUrl("#")
+                .baseUrl(BuildConfig.BASEURL)
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
@@ -82,19 +85,20 @@ public class NetworkModule {
         return new Gson();
     }
 
-//    @Provides
-//    @ApplicationScope
-//    public NetworkService providesNetworkService(
-//            Retrofit retrofit) {
-//        return retrofit.create(NetworkService.class);
-//    }
-//    @Provides
-//    @ApplicationScope
-//    public LoginService providesService(
-//            NetworkService networkService) {
-//        return new LoginService(networkService);
-//    }
-//
+    @Provides
+    @ApplicationScope
+    public NetworkService providesNetworkService(
+            Retrofit retrofit) {
+        return retrofit.create(NetworkService.class);
+    }
+
+    @Provides
+    @ApplicationScope
+    public LoginService providesService(
+            NetworkService networkService) {
+        return new LoginService(networkService);
+    }
+
 //    @Provides
 //    @ApplicationScope
 //    public FetchUserDataService provideFetchUserDataService(
