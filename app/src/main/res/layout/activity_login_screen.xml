@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/colorWhite"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="dietbisabesok.com.bukanitip.activity.login.LoginScreenActivity">
@@ -59,7 +60,7 @@
             android:textSize="20dp"
             android:layout_marginTop="16dp"
             android:textColor="@color/colorWhite"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/login"/>

@@ -23,6 +23,7 @@
         <activity
             android:name=".activity.login.LoginScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"></activity>
+        <activity android:name=".activity.home.HomeScreenActivity" />
     </application>
 
 </manifest>

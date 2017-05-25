@@ -12,22 +12,30 @@ import com.google.gson.Gson;
 
 import javax.inject.Inject;
 
+import dietbisabesok.com.bukanitip.activity.home.HomeScreenActivity;
 import dietbisabesok.com.bukanitip.activity.login.service.LoginResponse;
 import dietbisabesok.com.bukanitip.activity.login.service.LoginService;
 import dietbisabesok.com.bukanitip.helper.UIHelper;
 import dietbisabesok.com.bukanitip.network.NetworkError;
 import dietbisabesok.com.bukanitip.session.LoginSession;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
+import dietbisabesok.com.bukanitip.ui.navigation.ActivityScreenSwitcher;
 
 /**
  * Created by ibnumuzzakkir on 5/24/17.
  */
 public class LoginScreenPresenter extends ViewPresenter<LoginScreenView> {
     @Inject
+    Gson gson;
+
+    @Inject
     LoginService mLoginService;
 
     @Inject
     LoginSession mLoginSession;
+
+    @Inject
+    ActivityScreenSwitcher mActivityScreenSwitcher;
 
     private LoginScreenActivity mActivity;
     private String mUsername = null;
@@ -61,10 +69,12 @@ public class LoginScreenPresenter extends ViewPresenter<LoginScreenView> {
                 @Override
                 public void onSuccess(LoginResponse dataList) {
                     getView().mProgressDialog.dismiss();
+                    Log.d(getClass().getName(), gson.toJson(dataList));
                     mLoginSession.saveToken(dataList.token);
                     mLoginSession.saveUsername(dataList.user_name);
                     mLoginSession.saveUserID(dataList.user_id);
                     mLoginSession.saveEmail(dataList.email);
+                    mActivityScreenSwitcher.open(new HomeScreenActivity.Screen());
                 }
 
                 @Override

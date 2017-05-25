@@ -13,7 +13,9 @@ import org.androidannotations.annotations.EActivity;
 import java.util.Locale;
 
 import dietbisabesok.com.bukanitip.R;
+import dietbisabesok.com.bukanitip.activity.home.HomeScreenActivity;
 import dietbisabesok.com.bukanitip.activity.login.LoginScreenActivity;
+import dietbisabesok.com.bukanitip.session.LoginSession;
 
 @EActivity(R.layout.activity_splash_screen)
 public class SplashScreen extends AppCompatActivity {
@@ -31,12 +33,12 @@ public class SplashScreen extends AppCompatActivity {
     };
 
     private void redirect() {
-//        LoginSession session = new LoginSession();
-//        if (!session.isInitialized()) {
+        LoginSession session = new LoginSession();
+        if (!session.isInitialized()) {
             redirectToLogin();
-//        } else {
-//            redirectToHome();
-//        }
+        } else {
+            redirectToHome();
+        }
     }
 
     private void redirectToLogin() {
@@ -46,8 +48,8 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void redirectToHome() {
-//        Intent intent = new Intent(this, HomeActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, HomeScreenActivity.class);
+        startActivity(intent);
         finish();
     }
 

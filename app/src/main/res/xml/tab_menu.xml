@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/home"
+        icon="@drawable/ic_home_grey600_24dp"
+        title="Home" />
+    <tab
+        id="@+id/Profile"
+        icon="@drawable/ic_account_grey600_24dp"
+        title="Profile" />
+</tabs>
