@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,9 +50,9 @@ public class ItemSectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             case R.layout.item_section_second:
                 view = mLayoutInflater.inflate(R.layout.item_section, parent, false);
                 return new ItemSectionSecondVH(view);
+            default:
+                return null;
         }
-        View itemView = mLayoutInflater.inflate(R.layout.item_section, parent, false);
-        return new ItemSectionVH(itemView);
     }
 
     @Override
@@ -61,8 +62,9 @@ public class ItemSectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             List<Address> mAddressList = mSectionDataModelList.get(position).getAllItemsInSection();
             ((ItemSectionVH) holder).bind(sectionDataModel,mAddressList);
         }else{
-            SectionSecondDataModel data  = sectionSecondDataModelList.get(mSectionDataModelList.size() -1);
-            List<Country> mAddressList = sectionSecondDataModelList.get(position).getAllItemsInSection();
+            Log.d(getClass().getName(), String.valueOf(position  - (mSectionDataModelList.size() + sectionSecondDataModelList.size())) +"-" + String.valueOf(mSectionDataModelList.size() + sectionSecondDataModelList.size()));
+            SectionSecondDataModel data  = sectionSecondDataModelList.get(position-mSectionDataModelList.size());
+            List<Country> mAddressList = sectionSecondDataModelList.get(position-mSectionDataModelList.size()).getAllItemsInSection();
             ((ItemSectionSecondVH) holder).bind(data,mAddressList);
         }
 
@@ -117,11 +119,11 @@ public class ItemSectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
 
         void bind(SectionSecondDataModel data, List<Country> countryList) {
-//            HomeAdapterHorizontal mHomeAdapterHorizontal = new HomeAdapterHorizontal(mContext);
-//            mHomeAdapterHorizontal.setDataList(countryList);
+            HomeAdapterVertical mHomeAdapterVertical = new HomeAdapterVertical(mContext);
+            mHomeAdapterVertical.setDataList(countryList);
             mTitle.setText(data.getHeaderTitle());
-//            mRecycleView.setLayoutManager(new GridLayoutManager(mContext,1, LinearLayoutManager.VERTICAL, false));
-//            mRecycleView.setAdapter(mHomeAdapterHorizontal);
+            mRecycleView.setLayoutManager(new GridLayoutManager(mContext,3, LinearLayoutManager.VERTICAL, false));
+            mRecycleView.setAdapter(mHomeAdapterVertical);
         }
     }
 }

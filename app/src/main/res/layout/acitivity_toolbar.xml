@@ -8,6 +8,7 @@
     android:layout_height="wrap_content"
     android:minHeight="?attr/actionBarSize"
     android:background="@color/colorPrimary"
+    app:layout_scrollFlags="scroll|enterAlways"
     local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     local:popupTheme="@style/ThemeOverlay.AppCompat.Light">
     <RelativeLayout

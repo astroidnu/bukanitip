@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_margin="16dp"
     android:layout_width="100dp"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
             android:background="@color/colorPrimary"/>
         <TextView
             android:textAlignment="center"
-            android:id="@+id/trending_title"
+            android:id="@+id/country_title"
             android:fontFamily="sans"
             android:padding="8dp"
             android:textStyle="bold"
