@@ -12,7 +12,6 @@ import java.util.List;
 
 import dietbisabesok.com.bukanitip.R;
 import dietbisabesok.com.bukanitip.data.Address;
-import dietbisabesok.com.bukanitip.data.SectionDataModel;
 
 /**
  * Created by ibnumuzzakkir on 5/25/17.

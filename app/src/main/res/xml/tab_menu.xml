@@ -5,6 +5,14 @@
         icon="@drawable/ic_home_grey600_24dp"
         title="Home" />
     <tab
+        id="@+id/request"
+        icon="@drawable/ic_account_grey600_24dp"
+        title="My Request" />
+    <tab
+        id="@+id/trip"
+        icon="@drawable/ic_account_grey600_24dp"
+        title="My Trip" />
+    <tab
         id="@+id/Profile"
         icon="@drawable/ic_account_grey600_24dp"
         title="Profile" />

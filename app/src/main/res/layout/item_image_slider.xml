@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="180dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <com.synnapps.carouselview.CarouselView
+        android:id="@+id/carouselView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:fillColor="@color/colorWhite"
+        app:pageColor="@color/colorWhite"
+        app:radius="4dp"
+        app:slideInterval="3000"
+        app:strokeColor="@color/colorWhite"
+        app:strokeWidth="1dp"/>
+</LinearLayout>
