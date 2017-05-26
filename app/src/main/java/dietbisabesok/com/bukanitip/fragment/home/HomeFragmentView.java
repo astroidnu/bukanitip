@@ -17,8 +17,10 @@ import java.util.List;
 import dietbisabesok.com.bukanitip.R;
 import dietbisabesok.com.bukanitip.data.Address;
 import dietbisabesok.com.bukanitip.data.SectionDataModel;
+import dietbisabesok.com.bukanitip.data.SectionSecondDataModel;
 import dietbisabesok.com.bukanitip.fragment.home.adapter.HomeAdapterHorizontal;
 import dietbisabesok.com.bukanitip.fragment.home.adapter.ItemSectionAdapter;
+import dietbisabesok.com.bukanitip.fragment.home.adapter.ItemSectionSecondAdapter;
 
 /**
  * Created by ibnumuzzakkir on 5/25/17.
@@ -32,17 +34,22 @@ public class HomeFragmentView extends CoordinatorLayout {
     RecyclerView mRecyclerViewVertical;
 
     private ItemSectionAdapter mItemSectionAdapter;
+    private ItemSectionSecondAdapter mItemSectionSecondAdapter;
     private LayoutInflater mLayoutInflater;
 
     @AfterViews
     void init(){
         mRecyclerViewHorizontal.setLayoutManager(new GridLayoutManager(getContext(),1,LinearLayoutManager.VERTICAL, false));
         mItemSectionAdapter = new ItemSectionAdapter(getContext());
+
+        mRecyclerViewVertical.setLayoutManager(new LinearLayoutManager(getContext()));
+        mItemSectionSecondAdapter = new ItemSectionSecondAdapter(getContext());
+
         mRecyclerViewHorizontal.setHasFixedSize(true);
         mRecyclerViewHorizontal.setAdapter(mItemSectionAdapter);
 
-//        mRecyclerViewVertical.setLayoutManager(new GridLayoutManager(getContext(),1,LinearLayoutManager.VERTICAL, true));
-//        mRecyclerViewVertical.setHasFixedSize(true);
+        mRecyclerViewVertical.setHasFixedSize(true);
+        mRecyclerViewVertical.setAdapter(mItemSectionSecondAdapter);
     }
 
     public HomeFragmentView(Context context) {
@@ -50,9 +57,9 @@ public class HomeFragmentView extends CoordinatorLayout {
         mLayoutInflater = LayoutInflater.from(getContext());
     }
 
-    public void setAdapterHorizontal(List<SectionDataModel> addressList) {
-        if (addressList != null) {
-            mItemSectionAdapter.setDataList(addressList);
+    public void setAdapterHorizontal(List<SectionDataModel> addressList,List<SectionSecondDataModel> datas) {
+        if (addressList != null && datas != null) {
+            mItemSectionAdapter.setDataList(addressList,datas);
         }
     }
 }

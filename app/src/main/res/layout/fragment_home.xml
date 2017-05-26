@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <android.support.v7.widget.RecyclerView
+            android:visibility="gone"
             android:id="@+id/fragment_home_recyclerview_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
