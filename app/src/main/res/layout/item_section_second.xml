@@ -14,15 +14,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/section_title"
+                android:id="@+id/section_second_title"
                 android:layout_alignParentLeft="true"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Trending Request"/>
+                android:text="Countries"/>
             <TextView
-                android:id="@+id/section_view_all"
+                android:id="@+id/section_second_view_all"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:textSize="14dp"
@@ -31,7 +31,7 @@
                 android:text="Lihat Semua"/>
         </RelativeLayout>
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/section_recycleview"
+            android:id="@+id/section_second_recycleview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

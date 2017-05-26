@@ -2,36 +2,26 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
+    android:layout_margin="16dp"
+    android:layout_width="100dp"
     android:layout_height="match_parent">
-    <android.support.v7.widget.CardView
-        android:layout_margin="16dp"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout
-            android:orientation="vertical"
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:background="@color/colorLightGrey"/>
-            <TextView
-                android:fontFamily="sans"
-                android:padding="8dp"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Indonesia"/>
-            <TextView
-                android:fontFamily="sans"
-                android:padding="8dp"
-                android:textSize="14dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="5 Requests"/>
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
+            android:layout_height="70dp"
+            android:background="@color/colorPrimary"/>
+        <TextView
+            android:textAlignment="center"
+            android:id="@+id/trending_title"
+            android:fontFamily="sans"
+            android:padding="8dp"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Indonesia"/>
+    </LinearLayout>
 </LinearLayout>

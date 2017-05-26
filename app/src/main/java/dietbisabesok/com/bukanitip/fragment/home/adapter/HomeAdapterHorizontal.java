@@ -11,14 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dietbisabesok.com.bukanitip.R;
+import dietbisabesok.com.bukanitip.data.Address;
 import dietbisabesok.com.bukanitip.data.SectionDataModel;
 
 /**
  * Created by ibnumuzzakkir on 5/25/17.
  */
 
-public class HomeAdapterHorizontal extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<SectionDataModel> mSectionDataModelList = new ArrayList<>();
+public class HomeAdapterHorizontal extends RecyclerView.Adapter<HomeAdapterHorizontal.ViewHolder> {
+    private List<Address> mAddressList = new ArrayList<>();
     private LayoutInflater mLayoutInflater;
     private Context mContext;
 
@@ -27,27 +28,27 @@ public class HomeAdapterHorizontal extends RecyclerView.Adapter<RecyclerView.Vie
         mLayoutInflater = LayoutInflater.from(context);
     }
 
-    public void setDataList(List<SectionDataModel> sectionDataModels){
-        if(sectionDataModels != null){
-            mSectionDataModelList.addAll(sectionDataModels);
-            notifyDataSetChanged();
+    public void setDataList(List<Address> addressList){
+        if(addressList != null){
+            mAddressList = addressList;
         }
+        notifyDataSetChanged();
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = mLayoutInflater.inflate(R.layout.item_trending_request, parent, false);
-        return new TrendingRequestVH(itemView);
+        return new ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
 
     }
 
     @Override
     public int getItemCount() {
-        return mSectionDataModelList.size();
+        return mAddressList.size();
     }
 
     @Override
@@ -56,9 +57,9 @@ public class HomeAdapterHorizontal extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
 
-    public class TrendingRequestVH extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView mTitle;
-        public TrendingRequestVH(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             mTitle = (TextView) itemView.findViewById(R.id.trending_title);
         }

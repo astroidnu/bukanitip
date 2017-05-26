@@ -18,6 +18,7 @@ import dietbisabesok.com.bukanitip.R;
 import dietbisabesok.com.bukanitip.data.Address;
 import dietbisabesok.com.bukanitip.data.SectionDataModel;
 import dietbisabesok.com.bukanitip.fragment.home.adapter.HomeAdapterHorizontal;
+import dietbisabesok.com.bukanitip.fragment.home.adapter.ItemSectionAdapter;
 
 /**
  * Created by ibnumuzzakkir on 5/25/17.
@@ -30,15 +31,15 @@ public class HomeFragmentView extends CoordinatorLayout {
     @ViewById(R.id.fragment_home_recyclerview_vertical)
     RecyclerView mRecyclerViewVertical;
 
-    private HomeAdapterHorizontal mHomeAdapterHorizontal;
+    private ItemSectionAdapter mItemSectionAdapter;
     private LayoutInflater mLayoutInflater;
 
     @AfterViews
     void init(){
         mRecyclerViewHorizontal.setLayoutManager(new GridLayoutManager(getContext(),1,LinearLayoutManager.VERTICAL, false));
-        mHomeAdapterHorizontal = new HomeAdapterHorizontal(getContext());
+        mItemSectionAdapter = new ItemSectionAdapter(getContext());
         mRecyclerViewHorizontal.setHasFixedSize(true);
-        mRecyclerViewHorizontal.setAdapter(mHomeAdapterHorizontal);
+        mRecyclerViewHorizontal.setAdapter(mItemSectionAdapter);
 
 //        mRecyclerViewVertical.setLayoutManager(new GridLayoutManager(getContext(),1,LinearLayoutManager.VERTICAL, true));
 //        mRecyclerViewVertical.setHasFixedSize(true);
@@ -51,7 +52,7 @@ public class HomeFragmentView extends CoordinatorLayout {
 
     public void setAdapterHorizontal(List<SectionDataModel> addressList) {
         if (addressList != null) {
-            mHomeAdapterHorizontal.setDataList(addressList);
+            mItemSectionAdapter.setDataList(addressList);
         }
     }
 }

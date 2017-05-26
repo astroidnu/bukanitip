@@ -27,24 +27,10 @@ public class HomeFragmentPresenter extends ViewPresenter<HomeFragmentView> {
         createDummyData();
     }
 
-    private void setHorizontalData(){
-        List<Address> mAddressList = new ArrayList<>();
-        for(int i = 0;i<10;i++){
-            Address address = new Address();
-            address.setCity("Jakarta" + i);
-            address.setProvince("DKI Jakarta" + i);
-            mAddressList.add(address);
-        }
-    }
-
-
     public void createDummyData() {
-        for (int i = 1; i <= 5; i++) {
-
+        for (int i = 1; i <= 2; i++) {
             SectionDataModel dm = new SectionDataModel();
-
             dm.setHeaderTitle("Section " + i);
-
             ArrayList<Address> singleItem = new ArrayList<>();
             for (int j = 0; j <= 5; j++) {
                 Address address = new Address();
@@ -58,6 +44,12 @@ public class HomeFragmentPresenter extends ViewPresenter<HomeFragmentView> {
             allSampleData.add(dm);
 
             getView().setAdapterHorizontal(allSampleData);
+        }
+    }
+
+    public void createCountryDummy(){
+        for(int i=0;i<9;i++){
+
         }
     }
 }
