@@ -14,6 +14,7 @@ import java.util.List;
 
 import dietbisabesok.com.bukanitip.R;
 import dietbisabesok.com.bukanitip.data.Address;
+import dietbisabesok.com.bukanitip.data.Country;
 import dietbisabesok.com.bukanitip.data.SectionDataModel;
 import dietbisabesok.com.bukanitip.data.SectionSecondDataModel;
 
@@ -45,6 +46,9 @@ public class ItemSectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             case R.layout.item_section:
                 view = mLayoutInflater.inflate(R.layout.item_section, parent, false);
                 return new ItemSectionVH(view);
+            case R.layout.item_section_second:
+                view = mLayoutInflater.inflate(R.layout.item_section, parent, false);
+                return new ItemSectionSecondVH(view);
         }
         View itemView = mLayoutInflater.inflate(R.layout.item_section, parent, false);
         return new ItemSectionVH(itemView);
@@ -56,19 +60,28 @@ public class ItemSectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             SectionDataModel sectionDataModel  = mSectionDataModelList.get(position);
             List<Address> mAddressList = mSectionDataModelList.get(position).getAllItemsInSection();
             ((ItemSectionVH) holder).bind(sectionDataModel,mAddressList);
+        }else{
+            SectionSecondDataModel data  = sectionSecondDataModelList.get(mSectionDataModelList.size() -1);
+            List<Country> mAddressList = sectionSecondDataModelList.get(position).getAllItemsInSection();
+            ((ItemSectionSecondVH) holder).bind(data,mAddressList);
         }
 
     }
 
     @Override
     public int getItemCount() {
-        return mSectionDataModelList.size();
+        return mSectionDataModelList.size()+ sectionSecondDataModelList.size();
     }
 
 
     @Override
     public int getItemViewType(int position) {
-           return R.layout.item_section;
+        if(position < mSectionDataModelList.size()){
+            return R.layout.item_section;
+        }else{
+            return R.layout.item_section_second;
+        }
+
     }
 
 
@@ -89,6 +102,26 @@ public class ItemSectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             mTitle.setText(data.getHeaderTitle());
             mRecycleView.setLayoutManager(new GridLayoutManager(mContext,1, LinearLayoutManager.HORIZONTAL, false));
             mRecycleView.setAdapter(mHomeAdapterHorizontal);
+        }
+    }
+
+    public class ItemSectionSecondVH extends RecyclerView.ViewHolder {
+        TextView mTitle;
+        TextView mShowAll;
+        RecyclerView mRecycleView;
+        public ItemSectionSecondVH(View itemView) {
+            super(itemView);
+            mTitle = (TextView) itemView.findViewById(R.id.section_title);
+            mShowAll = (TextView) itemView.findViewById(R.id.section_view_all);
+            mRecycleView = (RecyclerView) itemView.findViewById(R.id.section_recycleview);
+        }
+
+        void bind(SectionSecondDataModel data, List<Country> countryList) {
+//            HomeAdapterHorizontal mHomeAdapterHorizontal = new HomeAdapterHorizontal(mContext);
+//            mHomeAdapterHorizontal.setDataList(countryList);
+            mTitle.setText(data.getHeaderTitle());
+//            mRecycleView.setLayoutManager(new GridLayoutManager(mContext,1, LinearLayoutManager.VERTICAL, false));
+//            mRecycleView.setAdapter(mHomeAdapterHorizontal);
         }
     }
 }
