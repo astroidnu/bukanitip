@@ -1,6 +1,7 @@
 package dietbisabesok.com.bukanitip.fragment.home.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
@@ -23,17 +24,24 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.inject.Inject;
+
 import dietbisabesok.com.bukanitip.R;
+import dietbisabesok.com.bukanitip.activity.showallcountry.ShowAllCountriesActivity;
 import dietbisabesok.com.bukanitip.data.Address;
 import dietbisabesok.com.bukanitip.data.Country;
 import dietbisabesok.com.bukanitip.data.SectionDataModel;
 import dietbisabesok.com.bukanitip.data.SectionSecondDataModel;
+import dietbisabesok.com.bukanitip.ui.navigation.ActivityScreenSwitcher;
 
 /**
  * Created by ibnumuzzakkir on 5/26/17.
  */
 
 public class ItemSectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    @Inject
+    ActivityScreenSwitcher mActivityScreenSwitcher;
+
     private List<SectionDataModel> mSectionDataModelList = new ArrayList<>();
     private List<SectionSecondDataModel> sectionSecondDataModelList = new ArrayList<>();
     private ArrayList<Integer> mImageSliderList = new ArrayList<>();
@@ -149,6 +157,13 @@ public class ItemSectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             mTitle.setText(data.getHeaderTitle());
             mRecycleView.setLayoutManager(new GridLayoutManager(mContext,3, LinearLayoutManager.VERTICAL, false));
             mRecycleView.setAdapter(mHomeAdapterVertical);
+            mShowAll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, ShowAllCountriesActivity.class);
+                    mContext.startActivity(intent);
+                }
+            });
         }
     }
 

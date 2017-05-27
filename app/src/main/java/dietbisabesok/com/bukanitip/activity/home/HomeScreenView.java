@@ -2,7 +2,9 @@ package dietbisabesok.com.bukanitip.activity.home;
 
 import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import com.roughike.bottombar.BottomBar;
 
@@ -20,8 +22,12 @@ import dietbisabesok.com.bukanitip.R;
 public class HomeScreenView extends CoordinatorLayout {
     @ViewById(R.id.home_toolbar)
     Toolbar mToolbar;
+    @ViewById(R.id.toolbar_title)
+    TextView mToolbarTitle;
     @ViewById(R.id.home_bottom_bar)
     BottomBar mBottomBar;
+    @ViewById(R.id.myScrollingContent)
+    NestedScrollView mMyScrollingContent;
 
     @AfterViews
     void init(){

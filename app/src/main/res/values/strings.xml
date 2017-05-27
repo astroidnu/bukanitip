@@ -4,4 +4,9 @@
     <string name="hint_username">Email / Username</string>
     <string name="hint_password">Password</string>
     <string name="login">Login</string>
+    <!--String Fragment-->
+    <string name="fragment_home">Buka Nitip</string>
+    <string name="fragment_my_request">My Request</string>
+    <string name="fragment_my_trip">My Trip</string>
+    <string name="fragment_my_profile">My Profile</string>
 </resources>

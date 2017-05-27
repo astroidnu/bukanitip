@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.design.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:animateLayoutChanges="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -11,7 +11,7 @@
         app:contentScrim="?attr/colorPrimary">
         <include
             android:id="@+id/home_toolbar"
-            layout="@layout/acitivity_toolbar" />
+            layout="@layout/activity_toolbar_fragment" />
     </android.support.design.widget.AppBarLayout>
     <android.support.v4.widget.NestedScrollView
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -28,6 +28,62 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"></FrameLayout>
     </android.support.v4.widget.NestedScrollView>
+    <com.github.clans.fab.FloatingActionMenu
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="8dp"
+        android:padding="10dp"
+        fab:menu_fab_size="normal"
+        fab:menu_showShadow="true"
+        fab:menu_shadowColor="@color/colorDarkGrey"
+        fab:menu_shadowRadius="4dp"
+        fab:menu_shadowXOffset="1dp"
+        fab:menu_shadowYOffset="3dp"
+        fab:menu_colorNormal="@color/colorRed"
+        fab:menu_colorPressed="@color/colorLightGrey"
+        fab:menu_colorRipple="@color/colorLightGrey"
+        fab:menu_animationDelayPerItem="50"
+        fab:menu_icon="@drawable/fab_add"
+        fab:menu_buttonSpacing="0dp"
+        fab:menu_labels_margin="0dp"
+        fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+        fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+        fab:menu_labels_paddingTop="4dp"
+        fab:menu_labels_paddingRight="8dp"
+        fab:menu_labels_paddingBottom="4dp"
+        fab:menu_labels_paddingLeft="8dp"
+        fab:menu_labels_padding="8dp"
+        fab:menu_labels_textColor="#FFFFFF"
+        fab:menu_labels_textSize="14sp"
+        fab:menu_labels_cornerRadius="3dp"
+        fab:menu_labels_colorNormal="#333333"
+        fab:menu_labels_colorPressed="#444444"
+        fab:menu_labels_colorRipple="#66FFFFFF"
+        fab:menu_labels_showShadow="true"
+        fab:menu_labels_singleLine="false"
+        fab:menu_labels_ellipsize="none"
+        fab:menu_labels_maxLines="-1"
+        fab:menu_labels_position="left"
+        fab:menu_openDirection="up"
+        fab:menu_backgroundColor="@android:color/transparent">
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/menu_my_request"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_home_white_24dp"
+                fab:fab_size="mini"
+                fab:fab_label="Add new request" />
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/menu_my_trip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_home_white_24dp"
+                fab:fab_size="mini"
+                fab:fab_label="Add new trip" />
+        </com.github.clans.fab.FloatingActionMenu>
+
     <com.roughike.bottombar.BottomBar
         app:layout_anchorGravity="bottom"
         android:id="@+id/home_bottom_bar"

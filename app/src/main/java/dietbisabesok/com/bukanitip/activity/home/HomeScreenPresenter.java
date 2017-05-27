@@ -1,14 +1,19 @@
 package dietbisabesok.com.bukanitip.activity.home;
 
+import android.os.Build;
 import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 
 import java.util.HashMap;
 
 import dietbisabesok.com.bukanitip.R;
 import dietbisabesok.com.bukanitip.fragment.home.HomeFragment;
+import dietbisabesok.com.bukanitip.fragment.myrequest.MyRequestFragment;
+import dietbisabesok.com.bukanitip.fragment.mytrip.MyTripFragment;
 import dietbisabesok.com.bukanitip.fragment.profile.ProfileFragment;
 import dietbisabesok.com.bukanitip.helper.AppConst;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
@@ -27,6 +32,8 @@ public class HomeScreenPresenter extends ViewPresenter<HomeScreenView> {
     private Fragment currentFragment;
     private HomeFragment mHomeFragment;
     private ProfileFragment mProfileFragment;
+    private MyRequestFragment mMyRequestFragment;
+    private MyTripFragment mMyTripFragment;
     private final Handler mDrawerHandler = new Handler();
 
     public HomeScreenPresenter(HomeScreenActivity homeScreenActivity) {
@@ -34,26 +41,46 @@ public class HomeScreenPresenter extends ViewPresenter<HomeScreenView> {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onLoad(){
         super.onLoad();
         getView().mToolbar.setVisibility(View.VISIBLE);
         setupFragment();
         setupBottomBar();
+
+       getView().mMyScrollingContent.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+           @Override
+           public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+               if(scrollY>oldScrollY){
+                   Log.d(getClass().getName(), "Hide");
+               }else{
+                   Log.d(getClass().getName(), "onShow");
+               }
+           }
+       });
     }
 
     private void setupFragment(){
         mHomeFragment = new HomeFragment();
         mProfileFragment = new ProfileFragment();
+        mMyRequestFragment = new MyRequestFragment();
+        mMyTripFragment = new MyTripFragment();
         fragments = new HashMap<>();
         fragments.put(AppConst.fragment_type.TAG_FRAGMENT_HOME, mHomeFragment);
         fragments.put(AppConst.fragment_type.TAG_FRAGMENT_PROFILE, mProfileFragment);
+        fragments.put(AppConst.fragment_type.TAG_FRAGMENT_MY_TRIP, mMyRequestFragment);
+        fragments.put(AppConst.fragment_type.TAG_FRAGMENT_MY_REQUEST, mMyTripFragment);
     }
 
     private void setupBottomBar(){
         getView().mBottomBar.setOnTabReselectListener(tabId -> {
             if(tabId == R.id.home){
                 loadFragment(AppConst.fragment_type.TAG_FRAGMENT_HOME, VISIBLE, VISIBLE, VISIBLE);
+            }else if(tabId == R.id.request){
+                loadFragment(AppConst.fragment_type.TAG_FRAGMENT_MY_REQUEST, VISIBLE, VISIBLE, VISIBLE);
+            }else if(tabId == R.id.trip){
+                loadFragment(AppConst.fragment_type.TAG_FRAGMENT_MY_TRIP, VISIBLE, VISIBLE, VISIBLE);
             }else{
                 loadFragment(AppConst.fragment_type.TAG_FRAGMENT_PROFILE, GONE, GONE, GONE);
             }
@@ -61,6 +88,10 @@ public class HomeScreenPresenter extends ViewPresenter<HomeScreenView> {
         getView().mBottomBar.setOnTabSelectListener(tabId -> {
             if(tabId == R.id.home){
                 loadFragment(AppConst.fragment_type.TAG_FRAGMENT_HOME, VISIBLE, VISIBLE, VISIBLE);
+            }else if(tabId == R.id.request){
+                loadFragment(AppConst.fragment_type.TAG_FRAGMENT_MY_REQUEST, VISIBLE, VISIBLE, VISIBLE);
+            }else if(tabId == R.id.trip) {
+                loadFragment(AppConst.fragment_type.TAG_FRAGMENT_MY_TRIP, VISIBLE, VISIBLE, VISIBLE);
             }else{
                 loadFragment(AppConst.fragment_type.TAG_FRAGMENT_PROFILE, GONE, GONE, GONE);
             }
@@ -78,7 +109,17 @@ public class HomeScreenPresenter extends ViewPresenter<HomeScreenView> {
             transaction.commit();
         }, 1);
         if (fragmentId != null) {
-            getView().mToolbar.setVisibility(View.VISIBLE);
+            if(fragmentId == AppConst.fragment_type.TAG_FRAGMENT_HOME){
+                getView().mToolbarTitle.setText(R.string.fragment_home);
+            }else if(fragmentId == AppConst.fragment_type.TAG_FRAGMENT_MY_REQUEST){
+                getView().mToolbarTitle.setText(R.string.fragment_my_request);
+            }else if(fragmentId == AppConst.fragment_type.TAG_FRAGMENT_MY_TRIP){
+                getView().mToolbarTitle.setText(R.string.fragment_my_trip);
+            }else if(fragmentId == AppConst.fragment_type.TAG_FRAGMENT_PROFILE){
+                getView().mToolbarTitle.setText(R.string.fragment_my_profile);
+            }else{
+                getView().mToolbarTitle.setText(R.string.fragment_home);
+            }
         }
     }
     public Fragment getCurrentFragment(){
