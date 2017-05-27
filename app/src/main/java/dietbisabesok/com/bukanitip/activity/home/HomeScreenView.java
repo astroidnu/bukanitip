@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.roughike.bottombar.BottomBar;
 
 import org.androidannotations.annotations.AfterViews;
@@ -31,6 +32,8 @@ public class HomeScreenView extends CoordinatorLayout {
     FloatingActionButton mMenuMyRequest;
     @ViewById(R.id.myScrollingContent)
     NestedScrollView mMyScrollingContent;
+    @ViewById(R.id.home_screen_floating_action_menu)
+    FloatingActionMenu mFloatingActionMenu;
 
     @AfterViews
     void init(){

@@ -123,13 +123,18 @@ public class HomeScreenPresenter extends ViewPresenter<HomeScreenView> {
         if (fragmentId != null) {
             if(fragmentId == AppConst.fragment_type.TAG_FRAGMENT_HOME){
                 getView().mToolbarTitle.setText(R.string.fragment_home);
+                getView().mFloatingActionMenu.setVisibility(View.VISIBLE);
             }else if(fragmentId == AppConst.fragment_type.TAG_FRAGMENT_MY_REQUEST){
                 getView().mToolbarTitle.setText(R.string.fragment_my_request);
+                getView().mFloatingActionMenu.setVisibility(View.VISIBLE);
             }else if(fragmentId == AppConst.fragment_type.TAG_FRAGMENT_MY_TRIP){
                 getView().mToolbarTitle.setText(R.string.fragment_my_trip);
+                getView().mFloatingActionMenu.setVisibility(View.VISIBLE);
             }else if(fragmentId == AppConst.fragment_type.TAG_FRAGMENT_PROFILE){
                 getView().mToolbarTitle.setText(R.string.fragment_my_profile);
+                getView().mFloatingActionMenu.setVisibility(View.GONE);
             }else{
+                getView().mFloatingActionMenu.setVisibility(View.GONE);
                 getView().mToolbarTitle.setText(R.string.fragment_home);
             }
         }

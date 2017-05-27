@@ -5,10 +5,10 @@
         icon="@drawable/ic_home_grey600_36dp" />
     <tab
         id="@+id/request"
-        icon="@drawable/ic_account_grey600_36dp" />
+        icon="@drawable/ic_wallet_giftcard_grey600_36dp" />
     <tab
         id="@+id/trip"
-        icon="@drawable/ic_account_grey600_36dp" />
+        icon="@drawable/ic_car_grey600_36dp" />
     <tab
         id="@+id/Profile"
         icon="@drawable/ic_account_grey600_36dp" />
