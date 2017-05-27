@@ -18,7 +18,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
-        <ImageView
+        <ImageButton
+            android:background="@android:color/transparent"
             android:layout_centerVertical="true"
             android:layout_marginLeft="-16dp"
             android:id="@+id/toolbar_arrow_left"
