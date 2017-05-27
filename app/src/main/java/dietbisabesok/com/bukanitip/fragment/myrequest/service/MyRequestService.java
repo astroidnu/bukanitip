@@ -17,9 +17,8 @@ import rx.schedulers.Schedulers;
 
 public class MyRequestService  {
     private final NetworkService networkService;
-    private String mUserID;
-
     private HashMap<String, String> mParam;
+
     public void init(HashMap<String, String> param){
         mParam = param;
     }

@@ -17,6 +17,7 @@ import dietbisabesok.com.bukanitip.di.module.AppUIModule;
 import dietbisabesok.com.bukanitip.di.module.NetworkModule;
 import dietbisabesok.com.bukanitip.di.module.UserModule;
 import dietbisabesok.com.bukanitip.di.scope.ApplicationScope;
+import dietbisabesok.com.bukanitip.fragment.myrequest.service.MyRequestService;
 import dietbisabesok.com.bukanitip.model.CountryDataModel;
 import dietbisabesok.com.bukanitip.network.NetworkService;
 import dietbisabesok.com.bukanitip.session.LoginSession;
@@ -50,6 +51,7 @@ public interface AppComponent extends IAppComponent {
     UpdateUserService updateUserService();
     FetchAllCountryListService fetchAllCountryListService();
     AddNewRequestService addNewRequestService();
+    MyRequestService myRequestService();
 
     /*Model DB*/
     CountryDataModel countryDataModel();

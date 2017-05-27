@@ -1,5 +1,10 @@
 package dietbisabesok.com.bukanitip.fragment.myrequest.service;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
+import dietbisabesok.com.bukanitip.data.MyRequestData;
 import dietbisabesok.com.bukanitip.network.response.CommonResponse;
 
 /**
@@ -7,4 +12,6 @@ import dietbisabesok.com.bukanitip.network.response.CommonResponse;
  */
 
 public class MyRequestServiceResponse extends CommonResponse {
+    @SerializedName("list_iklan")
+    public List<MyRequestData> myRequestDataList;
 }
