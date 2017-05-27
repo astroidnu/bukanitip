@@ -30,8 +30,6 @@ public class HomeScreenView extends CoordinatorLayout {
     BottomBar mBottomBar;
     @ViewById(R.id.menu_my_request)
     FloatingActionButton mMenuMyRequest;
-    @ViewById(R.id.myScrollingContent)
-    NestedScrollView mMyScrollingContent;
     @ViewById(R.id.home_screen_floating_action_menu)
     FloatingActionMenu mFloatingActionMenu;
 
