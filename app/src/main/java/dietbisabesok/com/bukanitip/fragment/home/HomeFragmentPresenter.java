@@ -20,6 +20,7 @@ import dietbisabesok.com.bukanitip.data.SectionDataModel;
 import dietbisabesok.com.bukanitip.data.SectionSecondDataModel;
 import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllCountryListService;
 import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllCountryResponse;
+import dietbisabesok.com.bukanitip.model.CountryDataModel;
 import dietbisabesok.com.bukanitip.network.NetworkError;
 import dietbisabesok.com.bukanitip.session.LoginSession;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
@@ -37,6 +38,9 @@ public class HomeFragmentPresenter extends ViewPresenter<HomeFragmentView> {
 
     @Inject
     LoginSession mLoginSession;
+
+    @Inject
+    CountryDataModel mCountryDataModel;
 
     private HomeFragment mFragment;
     ArrayList<SectionDataModel> allSampleData;
@@ -68,11 +72,13 @@ public class HomeFragmentPresenter extends ViewPresenter<HomeFragmentView> {
         mFetchAllCountryListService.fetchAllCountries(new FetchAllCountryListService.GetResponseCallback() {
             @Override
             public void onSuccess(FetchAllCountryResponse dataList) {
-               mCountryDataList = dataList.mListCountryData;
+                for(int i = 0; i<dataList.mListCountryData.size();i++){
+                    mCountryDataModel.save(dataList.mListCountryData.get(i));
+                }
                 for (int i = 1; i <= 1; i++) {
                     SectionSecondDataModel dm = new SectionSecondDataModel();
                     dm.setHeaderTitle("Trending Countries ");
-                    dm.setAllItemsInSection(mCountryDataList);
+                    dm.setAllItemsInSection(mCountryDataModel.loadTrendyCountryData());
                     allSampleData2.add(dm);
                     createDummyData(allSampleData2);
                 }

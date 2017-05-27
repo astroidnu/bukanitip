@@ -14,8 +14,10 @@ import org.greenrobot.eventbus.EventBus;
 import dagger.Module;
 import dagger.Provides;
 import dietbisabesok.com.bukanitip.app.BukaNitipApp;
+import dietbisabesok.com.bukanitip.data.DaoMaster;
 import dietbisabesok.com.bukanitip.data.DaoSession;
 import dietbisabesok.com.bukanitip.di.scope.ApplicationScope;
+import dietbisabesok.com.bukanitip.helper.AppConst;
 import dietbisabesok.com.bukanitip.job.BaseJob;
 import dietbisabesok.com.bukanitip.model.CountryDataModel;
 
@@ -57,17 +59,17 @@ public class AppModule {
         return new EventBus();
     }
 
-//    @Provides
-//    @ApplicationScope
-//    DaoSession provideDaoSession() {
-//        String DbName = AppConst.database_name.APP_DATABASE_NAME;
-//        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(UGMobileApp.getApp(), DbName);
-//        Log.d("New DB Name: ", DbName);
-//        SQLiteDatabase db = devOpenHelper.getWritableDatabase();
-//        DaoMaster daoMaster = new DaoMaster(db);
-//        Log.d("Schema DB" , String.valueOf(daoMaster.getSchemaVersion()));
-//        return daoMaster.newSession();
-//    }
+    @Provides
+    @ApplicationScope
+    DaoSession provideDaoSession() {
+        String DbName = AppConst.database_name.TAG_DATABASE_NAME;
+        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(BukaNitipApp.getApp(), DbName);
+        Log.d("New DB Name: ", DbName);
+        SQLiteDatabase db = devOpenHelper.getWritableDatabase();
+        DaoMaster daoMaster = new DaoMaster(db);
+        Log.d("Schema DB" , String.valueOf(daoMaster.getSchemaVersion()));
+        return daoMaster.newSession();
+    }
 //
 //    @Provides
 //    @ApplicationScope

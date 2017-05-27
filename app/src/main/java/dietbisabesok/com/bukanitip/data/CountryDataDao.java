@@ -13,7 +13,7 @@ import org.greenrobot.greendao.database.DatabaseStatement;
 /** 
  * DAO for table "COUNTRY_DATA".
 */
-public class CountryDataDao extends AbstractDao<CountryData, Void> {
+public class CountryDataDao extends AbstractDao<CountryData, Long> {
 
     public static final String TABLENAME = "COUNTRY_DATA";
 
@@ -22,7 +22,7 @@ public class CountryDataDao extends AbstractDao<CountryData, Void> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property Id = new Property(0, long.class, "id", false, "ID");
+        public final static Property Id = new Property(0, long.class, "id", true, "_id");
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
         public final static Property Icon_image = new Property(2, String.class, "icon_image", false, "ICON_IMAGE");
         public final static Property Background_image = new Property(3, String.class, "background_image", false, "BACKGROUND_IMAGE");
@@ -44,7 +44,7 @@ public class CountryDataDao extends AbstractDao<CountryData, Void> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"COUNTRY_DATA\" (" + //
-                "\"ID\" INTEGER NOT NULL ," + // 0: id
+                "\"_id\" INTEGER PRIMARY KEY NOT NULL UNIQUE ," + // 0: id
                 "\"NAME\" TEXT," + // 1: name
                 "\"ICON_IMAGE\" TEXT," + // 2: icon_image
                 "\"BACKGROUND_IMAGE\" TEXT," + // 3: background_image
@@ -108,8 +108,8 @@ public class CountryDataDao extends AbstractDao<CountryData, Void> {
     }
 
     @Override
-    public Void readKey(Cursor cursor, int offset) {
-        return null;
+    public Long readKey(Cursor cursor, int offset) {
+        return cursor.getLong(offset + 0);
     }    
 
     @Override
@@ -138,20 +138,23 @@ public class CountryDataDao extends AbstractDao<CountryData, Void> {
      }
     
     @Override
-    protected final Void updateKeyAfterInsert(CountryData entity, long rowId) {
-        // Unsupported or missing PK type
-        return null;
+    protected final Long updateKeyAfterInsert(CountryData entity, long rowId) {
+        entity.setId(rowId);
+        return rowId;
     }
     
     @Override
-    public Void getKey(CountryData entity) {
-        return null;
+    public Long getKey(CountryData entity) {
+        if(entity != null) {
+            return entity.getId();
+        } else {
+            return null;
+        }
     }
 
     @Override
     public boolean hasKey(CountryData entity) {
-        // TODO
-        return false;
+        throw new UnsupportedOperationException("Unsupported for entities with a non-null key");
     }
 
     @Override

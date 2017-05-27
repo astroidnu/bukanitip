@@ -28,9 +28,14 @@ public class CountryDataModel extends BaseModel {
     }
 
     @Nullable
-    public List<CountryData> loadTrendyCountryData(){
+    public List<CountryData> loadTrendyCountryData() {
         return mEntityDao.queryBuilder().where(CountryDataDao.Properties.Favorite.eq(1))
                 .orderAsc(CountryDataDao.Properties.Name).list();
+
+    }
+
+    public void save(CountryData countryData) {
+        mEntityDao.insertOrReplace(countryData);
     }
 
     public void clear() {

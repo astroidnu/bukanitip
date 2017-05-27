@@ -5,6 +5,10 @@ package dietbisabesok.com.bukanitip.helper;
  */
 
 public interface AppConst {
+
+    interface  database_name{
+        String TAG_DATABASE_NAME = "bukanitipdb";
+    }
     interface fragment_type{
         String TAG_FRAGMENT_HOME = "home";
         String TAG_FRAGMENT_MY_REQUEST = "my_request";

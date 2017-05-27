@@ -7,13 +7,16 @@ import com.google.gson.annotations.SerializedName;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Unique;
 
 /**
  * Created by ibnumuzzakkir on 5/27/17.
  */
 @Entity
 public class CountryData implements Parcelable{
-
+    @Unique
+    @Id
     @SerializedName("id")
     public long id;
     @SerializedName("name")
