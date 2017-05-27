@@ -10,6 +10,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +47,13 @@ public class ShowAllCountriesAdapter extends RecyclerView.Adapter<ShowAllCountri
     public void onBindViewHolder(ViewHolder holder, int position) {
         CountryData countryData = mCountryDataList.get(position);
         holder.mTitle.setText(countryData.getName());
+        Glide.with(mContext)
+                .load(countryData.getBackground_image())
+                .placeholder(R.drawable.borobudur)
+                .fitCenter()
+                .into(holder.mImageView);
+        holder.mRequestCount.setText("Jumlah Permintaan " + String.valueOf(countryData.getJumlah_titipan()));
+        holder.mDiasporaCount.setText("Jumlah Diaspora " + String.valueOf(countryData.getJumlah_diaspora()));
         holder.mAllCountriesFrame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

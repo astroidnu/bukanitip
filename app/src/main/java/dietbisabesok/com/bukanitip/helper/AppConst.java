@@ -5,7 +5,9 @@ package dietbisabesok.com.bukanitip.helper;
  */
 
 public interface AppConst {
-
+    interface activity_request_code{
+        int SELECT_PICTURE= 0;
+    }
     interface  database_name{
         String TAG_DATABASE_NAME = "bukanitipdb";
     }

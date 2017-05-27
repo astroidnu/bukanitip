@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import dagger.Module;
 import dagger.Provides;
 import dietbisabesok.com.bukanitip.BuildConfig;
+import dietbisabesok.com.bukanitip.activity.addnewrequest.service.AddNewRequestService;
 import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllCountryListService;
 import dietbisabesok.com.bukanitip.activity.login.service.LoginService;
 import dietbisabesok.com.bukanitip.activity.login.service.UpdateUserService;
@@ -110,13 +111,13 @@ public class NetworkModule {
             NetworkService networkService) {
         return new FetchAllCountryListService(networkService);
     }
-//
-//    @Provides
-//    @ApplicationScope
-//    public GetUserClassExamScheduleService provideGetUserClassExamScheduleService(
-//            NetworkService networkService) {
-//        return new GetUserClassExamScheduleService(networkService);
-//    }
+
+    @Provides
+    @ApplicationScope
+    public AddNewRequestService provideAddNewRequestService(
+            NetworkService networkService) {
+        return new AddNewRequestService(networkService);
+    }
 //
 //    @Provides
 //    @ApplicationScope

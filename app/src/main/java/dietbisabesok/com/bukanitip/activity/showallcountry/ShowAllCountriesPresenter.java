@@ -5,7 +5,10 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import dietbisabesok.com.bukanitip.data.CountryData;
+import dietbisabesok.com.bukanitip.model.CountryDataModel;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
 
 /**
@@ -13,6 +16,9 @@ import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
  */
 
 public class ShowAllCountriesPresenter extends ViewPresenter<ShowAllCountriesView> {
+    @Inject
+    CountryDataModel mCountryDataModel;
+
     private ShowAllCountriesActivity mActivity;
     private List<CountryData> mCountryDataList = new ArrayList<>();
 
@@ -22,8 +28,8 @@ public class ShowAllCountriesPresenter extends ViewPresenter<ShowAllCountriesVie
 
     @Override
     public void onLoad(){
-        createDummyData();
         onFinishActivity();
+        getView().setData(mCountryDataModel.loadAll());
     }
 
     private void onFinishActivity(){
@@ -34,15 +40,4 @@ public class ShowAllCountriesPresenter extends ViewPresenter<ShowAllCountriesVie
             }
         });
     }
-
-    private void createDummyData(){
-        for(int i = 0;i<10;i++){
-            CountryData countryData = new CountryData();
-            countryData.setName("Indonesia " + i);
-            mCountryDataList.add(countryData);
-        }
-
-        getView().setData(mCountryDataList);
-    }
-
 }

@@ -10,7 +10,7 @@
         android:id="@+id/all_countries_image"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:scaleType="center"
+        android:scaleType="centerCrop"
         android:src="@drawable/borobudur"
         android:background="@color/colorBlack"/>
     <LinearLayout

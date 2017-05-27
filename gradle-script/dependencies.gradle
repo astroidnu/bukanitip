@@ -23,6 +23,7 @@ ext{
     imageCompressorVersion = '1.0.4'
     eventBusVersion = '3.0.0'
     bottomNavVersion = '2.0.2'
+    imageCompressorVersion = '1.0.4'
 
     /*Package*/
     AAPackage = 'org.androidannotations'
@@ -48,6 +49,7 @@ ext{
     AAPackage = 'org.androidannotations'
     jsr250Package = 'javax.annotation'
     bottomNavPackage = 'com.roughike'
+    imageCompressionPackage = 'id.zelory'
 
     bottomNavDependencies = [bottomNav :buildDependency(bottomNavPackage, 'bottom-bar', bottomNavVersion)]
     daggerDependencies = [dagger : buildDependency(daggerPackage, 'dagger', daggerVersion),
@@ -89,6 +91,7 @@ ext{
                                  firebaseCore : buildDependency(firebasePackage, 'firebase-core', googleServiceVersion),
                                  firebaseCrash : buildDependency(firebasePackage, 'firebase-crash', googleServiceVersion),
                                  firebaseMessaging : buildDependency(firebasePackage, 'firebase-messaging', googleServiceVersion),]
+    imageCompressionDependencies = [imageCompression : buildDependency(imageCompressionPackage, 'compressor', imageCompressorVersion)]
 }
 
 String buildDependency(String pack, String dependency, String version) {

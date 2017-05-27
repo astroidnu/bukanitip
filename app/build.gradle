@@ -110,6 +110,7 @@ dependencies {
     debugCompile 'com.amitshekhar.android:debug-db:0.4.0'
 
     compile 'com.synnapps:carouselview:0.1.4'
+    compile imageCompressionDependencies.imageCompression
 }
 //
 //
