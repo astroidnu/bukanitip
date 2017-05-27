@@ -50,10 +50,10 @@ android {
     }
 }
 
-//greendao {
-//    targetGenDir 'src/main/java'
-//    schemaVersion 1
-//}
+greendao {
+    targetGenDir 'src/main/java'
+    schemaVersion 1
+}
 
 
 dependencies {

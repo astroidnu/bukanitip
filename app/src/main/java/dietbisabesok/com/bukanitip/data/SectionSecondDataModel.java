@@ -1,6 +1,7 @@
 package dietbisabesok.com.bukanitip.data;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ibnumuzzakkir on 26/05/2017.
@@ -10,13 +11,13 @@ import java.util.ArrayList;
 
 public class SectionSecondDataModel {
     private String headerTitle;
-    private ArrayList<Country> allItemsInSection;
+    private List<CountryData> allItemsInSection;
 
 
     public SectionSecondDataModel() {
 
     }
-    public SectionSecondDataModel(String headerTitle, ArrayList<Country> allItemsInSection) {
+    public SectionSecondDataModel(String headerTitle, ArrayList<CountryData> allItemsInSection) {
         this.headerTitle = headerTitle;
         this.allItemsInSection = allItemsInSection;
     }
@@ -31,11 +32,11 @@ public class SectionSecondDataModel {
         this.headerTitle = headerTitle;
     }
 
-    public ArrayList<Country> getAllItemsInSection() {
+    public List<CountryData> getAllItemsInSection() {
         return allItemsInSection;
     }
 
-    public void setAllItemsInSection(ArrayList<Country> allItemsInSection) {
+    public void setAllItemsInSection(List<CountryData> allItemsInSection) {
         this.allItemsInSection = allItemsInSection;
     }
 

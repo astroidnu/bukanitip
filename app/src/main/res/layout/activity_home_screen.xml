@@ -40,11 +40,11 @@
         fab:menu_fab_size="normal"
         fab:menu_showShadow="true"
         fab:menu_shadowColor="@color/colorDarkGrey"
-        fab:menu_shadowRadius="2dp"
-        fab:menu_shadowXOffset="1dp"
+        fab:menu_shadowRadius="4dp"
+        fab:menu_shadowXOffset="2dp"
         fab:menu_shadowYOffset="3dp"
         fab:menu_colorNormal="@color/colorRed"
-        fab:menu_colorPressed="@color/colorLightGrey"
+        fab:menu_colorPressed="@color/colorRed"
         fab:menu_colorRipple="@color/colorLightGrey"
         fab:menu_animationDelayPerItem="50"
         fab:menu_icon="@drawable/fab_add"
@@ -71,6 +71,8 @@
         fab:menu_openDirection="up"
         fab:menu_backgroundColor="@android:color/transparent">
             <com.github.clans.fab.FloatingActionButton
+                style="@style/MenuButtonsStyle"
+                fab:menu_backgroundColor="@color/colorRed"
                 android:id="@+id/menu_my_request"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,6 +80,7 @@
                 fab:fab_size="mini"
                 fab:fab_label="Add new request" />
             <com.github.clans.fab.FloatingActionButton
+                style="@style/MenuButtonsStyle"
                 android:id="@+id/menu_my_trip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

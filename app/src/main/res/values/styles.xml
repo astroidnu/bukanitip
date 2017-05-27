@@ -16,4 +16,14 @@
     <style name="tabTextApperance" parent="android:TextAppearance.Widget.TextView">
         <item name="android:textSize">@dimen/text_size_tab</item>
     </style>
+
+    <style name="MenuButtonsStyle">
+        <item name="fab_size">mini</item>
+        <item name="fab_showAnimation">@anim/jump_from_down</item>
+        <item name="fab_hideAnimation">@anim/jump_to_down</item>
+        <item name="fab_shadowColor">#444</item>
+        <item name="fab_colorNormal">@color/colorRed</item>
+        <item name="fab_colorPressed">@color/colorRed</item>
+        <item name="fab_colorRipple">@color/colorLightGrey</item>
+    </style>
 </resources>

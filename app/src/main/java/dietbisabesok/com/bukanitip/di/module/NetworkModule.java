@@ -8,19 +8,18 @@ import java.util.concurrent.TimeUnit;
 import dagger.Module;
 import dagger.Provides;
 import dietbisabesok.com.bukanitip.BuildConfig;
+import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllCountryListService;
 import dietbisabesok.com.bukanitip.activity.login.service.LoginService;
 import dietbisabesok.com.bukanitip.activity.login.service.UpdateUserService;
 import dietbisabesok.com.bukanitip.di.scope.ApplicationScope;
 import dietbisabesok.com.bukanitip.network.NetworkService;
 import okhttp3.Cache;
-import okhttp3.Credentials;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * Created by ibnumuzzakkir on 5/24/17.
@@ -104,13 +103,13 @@ public class NetworkModule {
             NetworkService networkService) {
         return new UpdateUserService(networkService);
     }
-//
-//    @Provides
-//    @ApplicationScope
-//    public FetchUserScheduleService provideFetchUserScheduleService(
-//            NetworkService networkService) {
-//        return new FetchUserScheduleService(networkService);
-//    }
+
+    @Provides
+    @ApplicationScope
+    public FetchAllCountryListService provideFetchAllCountryListService(
+            NetworkService networkService) {
+        return new FetchAllCountryListService(networkService);
+    }
 //
 //    @Provides
 //    @ApplicationScope

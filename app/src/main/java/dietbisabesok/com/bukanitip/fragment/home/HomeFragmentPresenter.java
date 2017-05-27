@@ -1,16 +1,27 @@
 package dietbisabesok.com.bukanitip.fragment.home;
 
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.ViewParent;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import dietbisabesok.com.bukanitip.R;
 import dietbisabesok.com.bukanitip.data.Address;
 import dietbisabesok.com.bukanitip.data.Country;
+import dietbisabesok.com.bukanitip.data.CountryData;
 import dietbisabesok.com.bukanitip.data.SectionDataModel;
 import dietbisabesok.com.bukanitip.data.SectionSecondDataModel;
+import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllCountryListService;
+import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllCountryResponse;
+import dietbisabesok.com.bukanitip.network.NetworkError;
+import dietbisabesok.com.bukanitip.session.LoginSession;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
 
 /**
@@ -18,9 +29,19 @@ import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
  */
 
 public class HomeFragmentPresenter extends ViewPresenter<HomeFragmentView> {
+    @Inject
+    FetchAllCountryListService mFetchAllCountryListService;
+
+    @Inject
+    Gson gson;
+
+    @Inject
+    LoginSession mLoginSession;
+
     private HomeFragment mFragment;
     ArrayList<SectionDataModel> allSampleData;
     ArrayList<SectionSecondDataModel> allSampleData2;
+    private List<CountryData> mCountryDataList = new ArrayList<>();
     private static final Integer[] images= {R.drawable.buka_nitip,R.drawable.buka_nitip};
     ArrayList<Integer> mImageList;
 
@@ -35,28 +56,42 @@ public class HomeFragmentPresenter extends ViewPresenter<HomeFragmentView> {
         allSampleData = new ArrayList<>();
         allSampleData2 = new ArrayList<>();
         mImageList = new ArrayList<>();
-        createDummyData();
+        fetchAllCountryList();
     }
 
-    public void createDummyData() {
+    private void fetchAllCountryList(){
+        HashMap<String, String> mParam = new HashMap<>();
+        mParam.put("token", mLoginSession.getLoginToken());
+        mParam.put("email", mLoginSession.getEmail());
+        mParam.put("user_id", mLoginSession.getUserID());
+        mFetchAllCountryListService.init(mParam);
+        mFetchAllCountryListService.fetchAllCountries(new FetchAllCountryListService.GetResponseCallback() {
+            @Override
+            public void onSuccess(FetchAllCountryResponse dataList) {
+               mCountryDataList = dataList.mListCountryData;
+                for (int i = 1; i <= 1; i++) {
+                    SectionSecondDataModel dm = new SectionSecondDataModel();
+                    dm.setHeaderTitle("Trending Countries ");
+                    dm.setAllItemsInSection(mCountryDataList);
+                    allSampleData2.add(dm);
+                    createDummyData(allSampleData2);
+                }
+            }
+
+            @Override
+            public void onError(NetworkError networkError) {
+                Log.e(getClass().getName(), networkError.getMessage());
+            }
+        });
+    }
+
+    public void createDummyData(ArrayList<SectionSecondDataModel> allSampleData2) {
+
+
         for(int i = 0;i<images.length;i++){
             mImageList.add(images[i]);
         }
-        for (int i = 1; i <= 1; i++) {
-            SectionSecondDataModel dm = new SectionSecondDataModel();
-            dm.setHeaderTitle("Countries " + i);
-            ArrayList<Country> singleItem = new ArrayList<>();
-            for (int j = 0; j <= 5; j++) {
-                Country country = new Country();
-                country.setCountry_id(String.valueOf(j));
-                country.setCountry_name("Indonesia " + j);
-                singleItem.add(country);
-            }
 
-            dm.setAllItemsInSection(singleItem);
-
-            allSampleData2.add(dm);
-        }
 
         for (int i = 1; i <= 1; i++) {
             SectionDataModel dm = new SectionDataModel();

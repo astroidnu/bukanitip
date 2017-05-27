@@ -14,8 +14,10 @@ import org.greenrobot.eventbus.EventBus;
 import dagger.Module;
 import dagger.Provides;
 import dietbisabesok.com.bukanitip.app.BukaNitipApp;
+import dietbisabesok.com.bukanitip.data.DaoSession;
 import dietbisabesok.com.bukanitip.di.scope.ApplicationScope;
 import dietbisabesok.com.bukanitip.job.BaseJob;
+import dietbisabesok.com.bukanitip.model.CountryDataModel;
 
 /**
  * Created by ibnumuzzakkir on 5/24/17.
@@ -73,12 +75,12 @@ public class AppModule {
 //        return new LocalState();
 //    }
 //
-//    @Provides
-//    @ApplicationScope
-//    ScheduleDataModel provideScheduleDataModel(DaoSession daoSession) {
-//        return new ScheduleDataModel(mApp, daoSession);
-//    }
-//
+    @Provides
+    @ApplicationScope
+    CountryDataModel provideCountryDataModel(DaoSession daoSession) {
+        return new CountryDataModel(mApp, daoSession);
+    }
+
 //    @Provides
 //    @ApplicationScope
 //    ScheduleDataSearchModel provideScheduleDataSearchModel(DaoSession daoSession) {

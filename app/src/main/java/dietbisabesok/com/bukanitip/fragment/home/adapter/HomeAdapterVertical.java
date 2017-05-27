@@ -12,6 +12,7 @@ import java.util.List;
 
 import dietbisabesok.com.bukanitip.R;
 import dietbisabesok.com.bukanitip.data.Country;
+import dietbisabesok.com.bukanitip.data.CountryData;
 
 /**
  * Created by ibnumuzzakkir on 5/26/17.
@@ -19,7 +20,7 @@ import dietbisabesok.com.bukanitip.data.Country;
 
 public class HomeAdapterVertical extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
-    private List<Country> mListCountry = new ArrayList<>();
+    private List<CountryData> mListCountry = new ArrayList<>();
     private LayoutInflater mLayoutInflater;
 
     public HomeAdapterVertical(Context context){
@@ -27,7 +28,7 @@ public class HomeAdapterVertical extends RecyclerView.Adapter<RecyclerView.ViewH
         mLayoutInflater = LayoutInflater.from(context);
     }
 
-    public void setDataList(List<Country> countries){
+    public void setDataList(List<CountryData> countries){
         if(countries!= null){
             mListCountry = countries;
         }
@@ -43,7 +44,7 @@ public class HomeAdapterVertical extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Country countries = mListCountry.get(position);
+        CountryData countries = mListCountry.get(position);
         ((CountryHolder) holder).bind(countries);
     }
 
@@ -60,8 +61,9 @@ public class HomeAdapterVertical extends RecyclerView.Adapter<RecyclerView.ViewH
             mTitle = (TextView) itemView.findViewById(R.id.country_title);
         }
 
-        void bind(Country data) {
-            mTitle.setText(data.getCountry_name());
+        void bind(CountryData data) {
+                mTitle.setText(data.getName());
+
         }
     }
 }

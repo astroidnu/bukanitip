@@ -1,11 +1,8 @@
 package dietbisabesok.com.bukanitip.activity.home;
 
-import android.os.Build;
 import android.os.Handler;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.View;
 
 import java.util.HashMap;
@@ -14,6 +11,7 @@ import javax.inject.Inject;
 
 import dietbisabesok.com.bukanitip.R;
 import dietbisabesok.com.bukanitip.activity.addnewrequest.AddNewRequestActivity;
+import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllCountryListService;
 import dietbisabesok.com.bukanitip.fragment.home.HomeFragment;
 import dietbisabesok.com.bukanitip.fragment.myrequest.MyRequestFragment;
 import dietbisabesok.com.bukanitip.fragment.mytrip.MyTripFragment;
@@ -32,6 +30,7 @@ import static android.view.View.VISIBLE;
 public class HomeScreenPresenter extends ViewPresenter<HomeScreenView> {
     @Inject
     ActivityScreenSwitcher mScreenSwitcher;
+
     private HomeScreenActivity mActivity;
     private HashMap<String, Fragment> fragments;
     private Fragment currentFragment;
