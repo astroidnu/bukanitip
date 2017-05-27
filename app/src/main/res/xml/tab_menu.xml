@@ -2,18 +2,14 @@
 <tabs>
     <tab
         id="@+id/home"
-        icon="@drawable/ic_home_grey600_24dp"
-        title="Home" />
+        icon="@drawable/ic_home_grey600_36dp" />
     <tab
         id="@+id/request"
-        icon="@drawable/ic_account_grey600_24dp"
-        title="My Request" />
+        icon="@drawable/ic_account_grey600_36dp" />
     <tab
         id="@+id/trip"
-        icon="@drawable/ic_account_grey600_24dp"
-        title="My Trip" />
+        icon="@drawable/ic_account_grey600_36dp" />
     <tab
         id="@+id/Profile"
-        icon="@drawable/ic_account_grey600_24dp"
-        title="Profile" />
+        icon="@drawable/ic_account_grey600_36dp" />
 </tabs>
