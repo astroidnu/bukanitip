@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EViewGroup;
@@ -26,6 +27,8 @@ public class ShowAllCountriesView extends CoordinatorLayout {
     ImageButton mArrowLeft;
     @ViewById(R.id.all_countries_recyclerview)
     RecyclerView mRecyclerView;
+    @ViewById(R.id.toolbar_title)
+    TextView mToolbarTitle;
 
     private ShowAllCountriesAdapter mShowAllCountriesAdapter;
 
@@ -35,6 +38,7 @@ public class ShowAllCountriesView extends CoordinatorLayout {
 
     @AfterViews
     void init(){
+        mToolbarTitle.setText("All Countries");
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mShowAllCountriesAdapter = new ShowAllCountriesAdapter(getContext());
         mRecyclerView.setHasFixedSize(true);

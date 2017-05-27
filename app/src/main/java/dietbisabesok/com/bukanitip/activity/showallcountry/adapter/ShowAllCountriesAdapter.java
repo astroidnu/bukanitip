@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +45,12 @@ public class ShowAllCountriesAdapter extends RecyclerView.Adapter<ShowAllCountri
     public void onBindViewHolder(ViewHolder holder, int position) {
         CountryData countryData = mCountryDataList.get(position);
         holder.mTitle.setText(countryData.getName());
+        holder.mAllCountriesFrame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext,countryData.getName(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -55,8 +63,10 @@ public class ShowAllCountriesAdapter extends RecyclerView.Adapter<ShowAllCountri
         ImageView mImageView;
         TextView mDiasporaCount;
         TextView mRequestCount;
+        RelativeLayout mAllCountriesFrame;
         public ViewHolder(View itemView) {
             super(itemView);
+            mAllCountriesFrame = (RelativeLayout) itemView.findViewById(R.id.all_countries_frame);
             mImageView = (ImageView) itemView.findViewById(R.id.all_countries_image);
             mTitle = (TextView) itemView.findViewById(R.id.all_countries_title);
             mDiasporaCount = (TextView) itemView.findViewById(R.id.all_countries_request_count);
