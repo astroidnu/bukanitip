@@ -7,16 +7,24 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
 
+import dagger.Provides;
+import dietbisabesok.com.bukanitip.BuildConfig;
 import dietbisabesok.com.bukanitip.activity.home.HomeScreenActivity;
 import dietbisabesok.com.bukanitip.activity.login.service.LoginResponse;
 import dietbisabesok.com.bukanitip.activity.login.service.LoginService;
+import dietbisabesok.com.bukanitip.activity.login.service.UpdateUserService;
+import dietbisabesok.com.bukanitip.di.module.NetworkModule;
 import dietbisabesok.com.bukanitip.helper.UIHelper;
 import dietbisabesok.com.bukanitip.network.NetworkError;
+import dietbisabesok.com.bukanitip.network.response.CommonResponse;
 import dietbisabesok.com.bukanitip.session.LoginSession;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
 import dietbisabesok.com.bukanitip.ui.navigation.ActivityScreenSwitcher;
@@ -32,6 +40,9 @@ public class LoginScreenPresenter extends ViewPresenter<LoginScreenView> {
     LoginService mLoginService;
 
     @Inject
+    UpdateUserService mUpdateUserService;
+
+    @Inject
     LoginSession mLoginSession;
 
     @Inject
@@ -40,6 +51,7 @@ public class LoginScreenPresenter extends ViewPresenter<LoginScreenView> {
     private LoginScreenActivity mActivity;
     private String mUsername = null;
     private String mPassword = null;
+    private HashMap<String, String> mParam = new HashMap<>();
 
     public LoginScreenPresenter(LoginScreenActivity loginScreenActivity) {
         mActivity = loginScreenActivity;
@@ -61,32 +73,59 @@ public class LoginScreenPresenter extends ViewPresenter<LoginScreenView> {
         mUsername = getView().mEmail.getText().toString();
         mPassword  = getView().mPassword.getText().toString();
         inputValidation();
-        //Call API
+        //Call API Bukalapak Login
         if(isValidEmail(mUsername) && isValidPassword(mPassword)){
             getView().mProgressDialog.show();
             mLoginService.init(getView().mEmail.getText().toString(), getView().mPassword.getText().toString());
             mLoginService.userLogin(new LoginService.GetResponseCallback() {
                 @Override
                 public void onSuccess(LoginResponse dataList) {
-                    getView().mProgressDialog.dismiss();
-                    Log.d(getClass().getName(), gson.toJson(dataList));
-                    mLoginSession.saveToken(dataList.token);
-                    mLoginSession.saveUsername(dataList.user_name);
-                    mLoginSession.saveUserID(dataList.user_id);
-                    mLoginSession.saveEmail(dataList.email);
-                    mActivityScreenSwitcher.open(new HomeScreenActivity.Screen());
+                    if(dataList.status.equals("ERROR")){
+                        getView().setToastMsg(dataList.message).show();
+                        getView().mProgressDialog.dismiss();
+                    }else{
+                        Log.d(getClass().getName(), gson.toJson(dataList));
+                        mLoginSession.saveToken(dataList.token);
+                        mLoginSession.saveUsername(dataList.user_name);
+                        mLoginSession.saveUserID(dataList.user_id);
+                        mLoginSession.saveEmail(dataList.email);
+                        updateUserService(dataList.token, dataList.email,String.valueOf(dataList.user_id),dataList.user_name);
+                        mActivityScreenSwitcher.open(new HomeScreenActivity.Screen());
+                    }
                 }
 
                 @Override
                 public void onError(NetworkError networkError) {
                     getView().mProgressDialog.dismiss();
-                    getView().setToastMsg(networkError.getMessage());
+                    getView().setToastMsg(networkError.getMessage()).show();
                     Log.e(getClass().getName(), networkError.getMessage());
                 }
             });
         }else{
             Log.e(getClass().getName(), "Failed login input validation");
         }
+    }
+
+    private void updateUserService(String token, String email, String user_id, String name){
+        //Call API Local Login
+        mParam.put("token", token);
+        mParam.put("email", email);
+        mParam.put("user_id", user_id);
+        mParam.put("name", name);
+        mUpdateUserService.init(mParam);
+        mUpdateUserService.updateUserInfo(new UpdateUserService.GetResponseCallback() {
+            @Override
+            public void onSuccess(CommonResponse dataList) {
+                Log.d(getClass().getName(), gson.toJson(dataList));
+                getView().mProgressDialog.dismiss();
+            }
+
+            @Override
+            public void onError(NetworkError networkError) {
+                getView().setToastMsg(networkError.getMessage()).show();
+                getView().mProgressDialog.dismiss();
+            }
+        });
     }
 
     private void inputValidation(){

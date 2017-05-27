@@ -7,7 +7,9 @@ import com.google.gson.Gson;
 import java.io.File;
 
 import dagger.Component;
+import dietbisabesok.com.bukanitip.BuildConfig;
 import dietbisabesok.com.bukanitip.activity.login.service.LoginService;
+import dietbisabesok.com.bukanitip.activity.login.service.UpdateUserService;
 import dietbisabesok.com.bukanitip.app.BukaNitipApp;
 import dietbisabesok.com.bukanitip.di.module.AppModule;
 import dietbisabesok.com.bukanitip.di.module.AppUIModule;
@@ -26,7 +28,6 @@ import dietbisabesok.com.bukanitip.session.LoginSession;
         modules = {AppModule.class, AppUIModule.class, NetworkModule.class, UserModule.class}
 )
 public interface AppComponent extends IAppComponent {
-
     final static class Initializer {
         public static AppComponent init(BukaNitipApp app){
             File cacheFile = new File(app.getCacheDir(), "api_cache");
@@ -44,4 +45,5 @@ public interface AppComponent extends IAppComponent {
 
     /*API Services*/
     LoginService loginService();
+    UpdateUserService updateUserService();
 }

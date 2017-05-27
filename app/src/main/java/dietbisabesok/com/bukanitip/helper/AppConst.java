@@ -11,4 +11,7 @@ public interface AppConst {
         String TAG_FRAGMENT_MY_TRIP = "my_trip";
         String TAG_FRAGMENT_PROFILE = "profile";
     }
+    interface base_url{
+        String TAG_LOCAL_BASE_URL = "http://katakamu.id/bukanitip/api_001/index.php/api/";
+    }
 }

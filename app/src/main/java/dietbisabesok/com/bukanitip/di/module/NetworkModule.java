@@ -9,6 +9,7 @@ import dagger.Module;
 import dagger.Provides;
 import dietbisabesok.com.bukanitip.BuildConfig;
 import dietbisabesok.com.bukanitip.activity.login.service.LoginService;
+import dietbisabesok.com.bukanitip.activity.login.service.UpdateUserService;
 import dietbisabesok.com.bukanitip.di.scope.ApplicationScope;
 import dietbisabesok.com.bukanitip.network.NetworkService;
 import okhttp3.Cache;
@@ -74,9 +75,7 @@ public class NetworkModule {
                 .baseUrl(BuildConfig.BASEURL)
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-
                 .build();
     }
     @Provides
@@ -99,12 +98,12 @@ public class NetworkModule {
         return new LoginService(networkService);
     }
 
-//    @Provides
-//    @ApplicationScope
-//    public FetchUserDataService provideFetchUserDataService(
-//            NetworkService networkService) {
-//        return new FetchUserDataService(networkService);
-//    }
+    @Provides
+    @ApplicationScope
+    public UpdateUserService provideUpdateUserService(
+            NetworkService networkService) {
+        return new UpdateUserService(networkService);
+    }
 //
 //    @Provides
 //    @ApplicationScope

@@ -46,7 +46,6 @@ public class HomeScreenPresenter extends ViewPresenter<HomeScreenView> {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onLoad(){
         super.onLoad();
@@ -54,23 +53,14 @@ public class HomeScreenPresenter extends ViewPresenter<HomeScreenView> {
         setupFragment();
         setupBottomBar();
 
-       getView().mMyScrollingContent.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-           @Override
-           public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-               if(scrollY>oldScrollY){
-                   Log.d(getClass().getName(), "Hide");
-               }else{
-                   Log.d(getClass().getName(), "onShow");
-               }
-           }
-       });
-
         getView().mMenuMyRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getView().mFloatingActionMenu.close(true);
                 mScreenSwitcher.open(new AddNewRequestActivity.Screen());
             }
         });
+        getView().mFloatingActionMenu.setClosedOnTouchOutside(true);
     }
 
     private void setupFragment(){

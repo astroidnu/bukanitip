@@ -1,9 +1,11 @@
 package dietbisabesok.com.bukanitip.activity.login.service;
 
-import dietbisabesok.com.bukanitip.BuildConfig;
-import dietbisabesok.com.bukanitip.di.module.NetworkModule;
+import java.util.HashMap;
+
+import dietbisabesok.com.bukanitip.helper.AppConst;
 import dietbisabesok.com.bukanitip.network.NetworkError;
 import dietbisabesok.com.bukanitip.network.NetworkService;
+import dietbisabesok.com.bukanitip.network.response.CommonResponse;
 import okhttp3.Credentials;
 import rx.Observable;
 import rx.Observer;
@@ -12,31 +14,28 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by ibnumuzzakkir on 5/25/17.
+ * Created by ibnumuzzakkir on 5/27/17.
  */
 
-public class LoginService {
+public class UpdateUserService {
     private final NetworkService networkService;
-    private String mUsername;
-    private String mPassword;
-
-    public void init(String username, String password){
-        mUsername = username;
-        mPassword = password;
+    private HashMap<String, String> mParam;
+    public void init(HashMap<String, String> param){
+        mParam = param;
     }
 
-    public LoginService(NetworkService networkService) {
+    public UpdateUserService(NetworkService networkService) {
         this.networkService = networkService;
     }
 
-    public Subscription userLogin(final GetResponseCallback callback) {
-        return networkService.userLogin(Credentials.basic(mUsername,mPassword))
+    public Subscription updateUserInfo(final GetResponseCallback callback) {
+        return networkService.updateUserInfo(AppConst.base_url.TAG_LOCAL_BASE_URL+"User/update_user",mParam)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .onErrorResumeNext(throwable -> {
                     return Observable.error(throwable);
                 })
-                .subscribe(new Observer<LoginResponse>() {
+                .subscribe(new Observer<CommonResponse>() {
                     @Override
                     public void onCompleted() {
                     }
@@ -50,7 +49,7 @@ public class LoginService {
 
                     }
                     @Override
-                    public void onNext(LoginResponse dataList) {
+                    public void onNext(CommonResponse dataList) {
                         try{
                             callback.onSuccess(dataList);
                         }catch (Exception e){
@@ -61,7 +60,7 @@ public class LoginService {
                 });
     }
     public interface GetResponseCallback{
-        void onSuccess(LoginResponse dataList);
+        void onSuccess(CommonResponse dataList);
         void onError(NetworkError networkError);
     }
 }

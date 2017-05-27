@@ -68,7 +68,7 @@ public class ItemSectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 view = mLayoutInflater.inflate(R.layout.item_section, parent, false);
                 return new ItemSectionVH(view);
             case R.layout.item_section_second:
-                view = mLayoutInflater.inflate(R.layout.item_section, parent, false);
+                view = mLayoutInflater.inflate(R.layout.item_section_second, parent, false);
                 return new ItemSectionSecondVH(view);
             case R.layout.item_image_slider:
                 view = mLayoutInflater.inflate(R.layout.item_image_slider, parent, false);
@@ -146,9 +146,9 @@ public class ItemSectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         RecyclerView mRecycleView;
         public ItemSectionSecondVH(View itemView) {
             super(itemView);
-            mTitle = (TextView) itemView.findViewById(R.id.section_title);
-            mShowAll = (TextView) itemView.findViewById(R.id.section_view_all);
-            mRecycleView = (RecyclerView) itemView.findViewById(R.id.section_recycleview);
+            mTitle = (TextView) itemView.findViewById(R.id.section_second_title);
+            mShowAll = (TextView) itemView.findViewById(R.id.section_second_view_all);
+            mRecycleView = (RecyclerView) itemView.findViewById(R.id.section_second_recycleview);
         }
 
         void bind(SectionSecondDataModel data, List<Country> countryList) {

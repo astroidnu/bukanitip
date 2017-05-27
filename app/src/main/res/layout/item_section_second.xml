@@ -28,9 +28,10 @@
                 android:textSize="14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lihat Semua"/>
+                android:text="View All"/>
         </RelativeLayout>
         <android.support.v7.widget.RecyclerView
+            android:layout_margin="16dp"
             android:id="@+id/section_second_recycleview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
