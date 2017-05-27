@@ -6,6 +6,7 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
+import com.github.clans.fab.FloatingActionButton;
 import com.roughike.bottombar.BottomBar;
 
 import org.androidannotations.annotations.AfterViews;
@@ -26,6 +27,8 @@ public class HomeScreenView extends CoordinatorLayout {
     TextView mToolbarTitle;
     @ViewById(R.id.home_bottom_bar)
     BottomBar mBottomBar;
+    @ViewById(R.id.menu_my_request)
+    FloatingActionButton mMenuMyRequest;
     @ViewById(R.id.myScrollingContent)
     NestedScrollView mMyScrollingContent;
 

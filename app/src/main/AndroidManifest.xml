@@ -25,6 +25,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"></activity>
         <activity android:name=".activity.home.HomeScreenActivity" />
         <activity android:name=".activity.showallcountry.ShowAllCountriesActivity"/>
+        <activity android:name=".activity.addnewrequest.AddNewRequestActivity"/>
     </application>
 
 </manifest>

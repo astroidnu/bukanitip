@@ -10,13 +10,17 @@ import android.view.View;
 
 import java.util.HashMap;
 
+import javax.inject.Inject;
+
 import dietbisabesok.com.bukanitip.R;
+import dietbisabesok.com.bukanitip.activity.addnewrequest.AddNewRequestActivity;
 import dietbisabesok.com.bukanitip.fragment.home.HomeFragment;
 import dietbisabesok.com.bukanitip.fragment.myrequest.MyRequestFragment;
 import dietbisabesok.com.bukanitip.fragment.mytrip.MyTripFragment;
 import dietbisabesok.com.bukanitip.fragment.profile.ProfileFragment;
 import dietbisabesok.com.bukanitip.helper.AppConst;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
+import dietbisabesok.com.bukanitip.ui.navigation.ActivityScreenSwitcher;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -26,7 +30,8 @@ import static android.view.View.VISIBLE;
  */
 
 public class HomeScreenPresenter extends ViewPresenter<HomeScreenView> {
-
+    @Inject
+    ActivityScreenSwitcher mScreenSwitcher;
     private HomeScreenActivity mActivity;
     private HashMap<String, Fragment> fragments;
     private Fragment currentFragment;
@@ -59,6 +64,13 @@ public class HomeScreenPresenter extends ViewPresenter<HomeScreenView> {
                }
            }
        });
+
+        getView().mMenuMyRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mScreenSwitcher.open(new AddNewRequestActivity.Screen());
+            }
+        });
     }
 
     private void setupFragment(){
@@ -69,8 +81,8 @@ public class HomeScreenPresenter extends ViewPresenter<HomeScreenView> {
         fragments = new HashMap<>();
         fragments.put(AppConst.fragment_type.TAG_FRAGMENT_HOME, mHomeFragment);
         fragments.put(AppConst.fragment_type.TAG_FRAGMENT_PROFILE, mProfileFragment);
-        fragments.put(AppConst.fragment_type.TAG_FRAGMENT_MY_TRIP, mMyRequestFragment);
-        fragments.put(AppConst.fragment_type.TAG_FRAGMENT_MY_REQUEST, mMyTripFragment);
+        fragments.put(AppConst.fragment_type.TAG_FRAGMENT_MY_TRIP, mMyTripFragment);
+        fragments.put(AppConst.fragment_type.TAG_FRAGMENT_MY_REQUEST, mMyRequestFragment);
     }
 
     private void setupBottomBar(){

@@ -4,13 +4,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+
     android:layout_width="match_parent">
     <ImageView
         android:id="@+id/all_countries_image"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:alpha="0.9"
+        android:scaleType="center"
+        android:src="@drawable/borobudur"
         android:background="@color/colorBlack"/>
     <LinearLayout
         android:layout_centerInParent="true"
