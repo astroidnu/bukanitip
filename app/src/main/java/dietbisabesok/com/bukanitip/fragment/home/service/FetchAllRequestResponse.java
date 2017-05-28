@@ -1,4 +1,4 @@
-package dietbisabesok.com.bukanitip.fragment.myrequest.service;
+package dietbisabesok.com.bukanitip.fragment.home.service;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -8,10 +8,10 @@ import dietbisabesok.com.bukanitip.data.RequestData;
 import dietbisabesok.com.bukanitip.network.response.CommonResponse;
 
 /**
- * Created by ibnumuzzakkir on 5/27/17.
+ * Created by ibnumuzzakkir on 5/28/17.
  */
 
-public class MyRequestServiceResponse extends CommonResponse {
+public class FetchAllRequestResponse extends CommonResponse {
     @SerializedName("list_iklan")
-    public List<RequestData> requestDataList;
+    public List<RequestData> mListRequestData;
 }

@@ -5,20 +5,24 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import dietbisabesok.com.bukanitip.R;
 import dietbisabesok.com.bukanitip.data.Address;
+import dietbisabesok.com.bukanitip.data.RequestData;
 
 /**
  * Created by ibnumuzzakkir on 5/25/17.
  */
 
 public class HomeAdapterHorizontal extends RecyclerView.Adapter<HomeAdapterHorizontal.ViewHolder> {
-    private List<Address> mAddressList = new ArrayList<>();
+    private List<RequestData> mRequestDataList = new ArrayList<>();
     private LayoutInflater mLayoutInflater;
     private Context mContext;
 
@@ -27,9 +31,9 @@ public class HomeAdapterHorizontal extends RecyclerView.Adapter<HomeAdapterHoriz
         mLayoutInflater = LayoutInflater.from(context);
     }
 
-    public void setDataList(List<Address> addressList){
-        if(addressList != null){
-            mAddressList = addressList;
+    public void setDataList(List<RequestData> requestDatas){
+        if(requestDatas != null){
+            mRequestDataList = requestDatas;
         }
         notifyDataSetChanged();
     }
@@ -42,12 +46,18 @@ public class HomeAdapterHorizontal extends RecyclerView.Adapter<HomeAdapterHoriz
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+        RequestData requestData= mRequestDataList.get(position);
+        holder.mCountry.setText(String.valueOf(requestData.country_id));
+        holder.mTitle.setText(requestData.title);
+        Glide.with(mContext)
+                .load(requestData.img_url)
+                .placeholder(R.drawable.borobudur)
+                .into(holder.mImageView);
     }
 
     @Override
     public int getItemCount() {
-        return mAddressList.size();
+        return mRequestDataList.size();
     }
 
     @Override
@@ -58,9 +68,14 @@ public class HomeAdapterHorizontal extends RecyclerView.Adapter<HomeAdapterHoriz
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView mTitle;
+        ImageView mImageView;
+        TextView mCountry;
         public ViewHolder(View itemView) {
             super(itemView);
-            mTitle = (TextView) itemView.findViewById(R.id.trending_title);
+            mTitle = (TextView) itemView.findViewById(R.id.trending_request_title);
+            mCountry = (TextView) itemView.findViewById(R.id.trending_request_country);
+            mImageView = (ImageView) itemView.findViewById(R.id.trending_request_imageview);
+
         }
     }
 }

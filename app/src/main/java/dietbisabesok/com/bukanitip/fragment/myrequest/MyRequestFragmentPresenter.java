@@ -5,7 +5,6 @@ import android.util.Log;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
-import java.util.StringJoiner;
 
 import javax.inject.Inject;
 
@@ -50,7 +49,7 @@ public class MyRequestFragmentPresenter extends ViewPresenter<MyRequestFragmentV
         myRequestService.getMyRequestList(new MyRequestService.GetResponseCallback() {
             @Override
             public void onSuccess(MyRequestServiceResponse dataList) {
-                getView().setData(dataList.myRequestDataList);
+                getView().setData(dataList.requestDataList);
             }
 
             @Override

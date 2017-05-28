@@ -16,10 +16,12 @@ import dagger.Provides;
 import dietbisabesok.com.bukanitip.app.BukaNitipApp;
 import dietbisabesok.com.bukanitip.data.DaoMaster;
 import dietbisabesok.com.bukanitip.data.DaoSession;
+import dietbisabesok.com.bukanitip.data.RequestData;
 import dietbisabesok.com.bukanitip.di.scope.ApplicationScope;
 import dietbisabesok.com.bukanitip.helper.AppConst;
 import dietbisabesok.com.bukanitip.job.BaseJob;
 import dietbisabesok.com.bukanitip.model.CountryDataModel;
+import dietbisabesok.com.bukanitip.model.RequestDataModel;
 
 /**
  * Created by ibnumuzzakkir on 5/24/17.
@@ -83,11 +85,11 @@ public class AppModule {
         return new CountryDataModel(mApp, daoSession);
     }
 
-//    @Provides
-//    @ApplicationScope
-//    ScheduleDataSearchModel provideScheduleDataSearchModel(DaoSession daoSession) {
-//        return new ScheduleDataSearchModel(mApp, daoSession);
-//    }
+    @Provides
+    @ApplicationScope
+    RequestDataModel provideRequestDataModel(DaoSession daoSession) {
+        return new RequestDataModel(mApp, daoSession);
+    }
 //
 //    @Provides
 //    @ApplicationScope

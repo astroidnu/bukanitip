@@ -27,6 +27,7 @@
         <activity android:name=".activity.home.HomeScreenActivity" />
         <activity android:name=".activity.showallcountry.ShowAllCountriesActivity"/>
         <activity android:name=".activity.addnewrequest.AddNewRequestActivity"/>
+        <activity android:name=".activity.showallrequest.ShowAllRequestActivity"/>
     </application>
 
 </manifest>

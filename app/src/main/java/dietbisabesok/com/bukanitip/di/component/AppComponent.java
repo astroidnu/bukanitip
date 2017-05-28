@@ -8,6 +8,7 @@ import java.io.File;
 
 import dagger.Component;
 import dietbisabesok.com.bukanitip.activity.addnewrequest.service.AddNewRequestService;
+import dietbisabesok.com.bukanitip.data.RequestDataDao;
 import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllCountryListService;
 import dietbisabesok.com.bukanitip.activity.login.service.LoginService;
 import dietbisabesok.com.bukanitip.activity.login.service.UpdateUserService;
@@ -17,8 +18,10 @@ import dietbisabesok.com.bukanitip.di.module.AppUIModule;
 import dietbisabesok.com.bukanitip.di.module.NetworkModule;
 import dietbisabesok.com.bukanitip.di.module.UserModule;
 import dietbisabesok.com.bukanitip.di.scope.ApplicationScope;
+import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllRequestListService;
 import dietbisabesok.com.bukanitip.fragment.myrequest.service.MyRequestService;
 import dietbisabesok.com.bukanitip.model.CountryDataModel;
+import dietbisabesok.com.bukanitip.model.RequestDataModel;
 import dietbisabesok.com.bukanitip.network.NetworkService;
 import dietbisabesok.com.bukanitip.session.LoginSession;
 
@@ -52,8 +55,11 @@ public interface AppComponent extends IAppComponent {
     FetchAllCountryListService fetchAllCountryListService();
     AddNewRequestService addNewRequestService();
     MyRequestService myRequestService();
+    FetchAllRequestListService fetchAllRequestListService();
 
     /*Model DB*/
     CountryDataModel countryDataModel();
     void inject(CountryDataModel countryDataModel);
+    RequestDataModel requestDataModel();
+    void inject(RequestDataModel requestDataModel);
 }

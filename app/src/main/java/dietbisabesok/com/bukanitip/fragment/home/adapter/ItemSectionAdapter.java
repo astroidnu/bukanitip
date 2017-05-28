@@ -31,6 +31,7 @@ import dietbisabesok.com.bukanitip.activity.showallcountry.ShowAllCountriesActiv
 import dietbisabesok.com.bukanitip.data.Address;
 import dietbisabesok.com.bukanitip.data.Country;
 import dietbisabesok.com.bukanitip.data.CountryData;
+import dietbisabesok.com.bukanitip.data.RequestData;
 import dietbisabesok.com.bukanitip.data.SectionDataModel;
 import dietbisabesok.com.bukanitip.data.SectionSecondDataModel;
 import dietbisabesok.com.bukanitip.ui.navigation.ActivityScreenSwitcher;
@@ -85,7 +86,7 @@ public class ItemSectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             ((ItemAdapterImageVH) holder).bind();
         }else if(holder instanceof ItemSectionVH){
             SectionDataModel sectionDataModel  = mSectionDataModelList.get(position-1);
-            List<Address> mAddressList = mSectionDataModelList.get(position -1).getAllItemsInSection();
+            List<RequestData> mAddressList = mSectionDataModelList.get(position -1).getAllItemsInSection();
             ((ItemSectionVH) holder).bind(sectionDataModel,mAddressList);
         }else{
             Log.d(getClass().getName(), String.valueOf(position  - mSectionDataModelList.size()) +"-" + String.valueOf(mSectionDataModelList.size() + sectionSecondDataModelList.size()));
@@ -126,7 +127,7 @@ public class ItemSectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             mRecycleView = (RecyclerView) itemView.findViewById(R.id.section_recycleview);
         }
 
-        void bind(SectionDataModel data, List<Address> mAddressList) {
+        void bind(SectionDataModel data, List<RequestData> mAddressList) {
             HomeAdapterHorizontal mHomeAdapterHorizontal = new HomeAdapterHorizontal(mContext);
             mHomeAdapterHorizontal.setDataList(mAddressList);
             mTitle.setText(data.getHeaderTitle());

@@ -16,11 +16,15 @@ import dietbisabesok.com.bukanitip.R;
 import dietbisabesok.com.bukanitip.data.Address;
 import dietbisabesok.com.bukanitip.data.Country;
 import dietbisabesok.com.bukanitip.data.CountryData;
+import dietbisabesok.com.bukanitip.data.RequestData;
 import dietbisabesok.com.bukanitip.data.SectionDataModel;
 import dietbisabesok.com.bukanitip.data.SectionSecondDataModel;
 import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllCountryListService;
 import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllCountryResponse;
+import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllRequestListService;
+import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllRequestResponse;
 import dietbisabesok.com.bukanitip.model.CountryDataModel;
+import dietbisabesok.com.bukanitip.model.RequestDataModel;
 import dietbisabesok.com.bukanitip.network.NetworkError;
 import dietbisabesok.com.bukanitip.session.LoginSession;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
@@ -34,6 +38,9 @@ public class HomeFragmentPresenter extends ViewPresenter<HomeFragmentView> {
     FetchAllCountryListService mFetchAllCountryListService;
 
     @Inject
+    FetchAllRequestListService mFetchAllRequestListService;
+
+    @Inject
     Gson gson;
 
     @Inject
@@ -41,6 +48,9 @@ public class HomeFragmentPresenter extends ViewPresenter<HomeFragmentView> {
 
     @Inject
     CountryDataModel mCountryDataModel;
+
+    @Inject
+    RequestDataModel mRequestDataModel;
 
     private HomeFragment mFragment;
     ArrayList<SectionDataModel> allSampleData;
@@ -60,7 +70,31 @@ public class HomeFragmentPresenter extends ViewPresenter<HomeFragmentView> {
         allSampleData = new ArrayList<>();
         allSampleData2 = new ArrayList<>();
         mImageList = new ArrayList<>();
+        fetchAllRequestList();
         fetchAllCountryList();
+    }
+
+    private void fetchAllRequestList(){
+        HashMap<String, String> mParam = new HashMap<>();
+        mParam.put("token", mLoginSession.getLoginToken());
+        mParam.put("email", mLoginSession.getEmail());
+        mParam.put("user_id", mLoginSession.getUserID());
+        mFetchAllRequestListService.init(mParam);
+        mFetchAllRequestListService.fetchAllRequest(new FetchAllRequestListService.GetResponseCallback() {
+            @Override
+            public void onSuccess(FetchAllRequestResponse dataList) {
+                if(dataList != null){
+                    for(RequestData requestData: dataList.mListRequestData){
+                        mRequestDataModel.save(requestData);
+                    }
+                }
+            }
+
+            @Override
+            public void onError(NetworkError networkError) {
+                Log.e(getClass().getName(), networkError.getMessage());
+            }
+        });
     }
 
     private void fetchAllCountryList(){
@@ -101,17 +135,9 @@ public class HomeFragmentPresenter extends ViewPresenter<HomeFragmentView> {
 
         for (int i = 1; i <= 1; i++) {
             SectionDataModel dm = new SectionDataModel();
-            dm.setHeaderTitle("Section " + i);
-            ArrayList<Address> singleItem = new ArrayList<>();
-            for (int j = 0; j <= 5; j++) {
-                Address address = new Address();
-                address.setCity("Jakarta " + j);
-                address.setProvince("DKI Jakarta " + j);
-                singleItem.add(address);
-            }
+            dm.setHeaderTitle("Trending Request");
 
-            dm.setAllItemsInSection(singleItem);
-
+            dm.setAllItemsInSection(mRequestDataModel.loadAllTrendRequest());
             allSampleData.add(dm);
 
             getView().setAdapterHorizontal(allSampleData,allSampleData2, mImageList);

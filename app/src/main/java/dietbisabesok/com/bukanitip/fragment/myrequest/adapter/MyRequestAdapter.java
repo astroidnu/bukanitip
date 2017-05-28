@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dietbisabesok.com.bukanitip.R;
-import dietbisabesok.com.bukanitip.data.MyRequestData;
+import dietbisabesok.com.bukanitip.data.RequestData;
 import dietbisabesok.com.bukanitip.helper.CurrencyHelper;
 
 /**
@@ -23,7 +23,7 @@ import dietbisabesok.com.bukanitip.helper.CurrencyHelper;
 
 public class MyRequestAdapter extends RecyclerView.Adapter<MyRequestAdapter.ViewHolder> {
     private Context mContext;
-    private List<MyRequestData> mMyRequestDataList = new ArrayList<>();
+    private List<RequestData> mRequestDataList = new ArrayList<>();
     private LayoutInflater mLayoutInflater;
 
     public MyRequestAdapter(Context context){
@@ -31,8 +31,8 @@ public class MyRequestAdapter extends RecyclerView.Adapter<MyRequestAdapter.View
         mLayoutInflater = LayoutInflater.from(context);
     }
 
-    public void setData(List<MyRequestData> dataList){
-        mMyRequestDataList = dataList;
+    public void setData(List<RequestData> dataList){
+        mRequestDataList = dataList;
         notifyDataSetChanged();
     }
     @Override
@@ -44,19 +44,19 @@ public class MyRequestAdapter extends RecyclerView.Adapter<MyRequestAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        MyRequestData myRequestData = mMyRequestDataList.get(position);
-        holder.mTitle.setText(myRequestData.title);
+        RequestData requestData = mRequestDataList.get(position);
+        holder.mTitle.setText(requestData.title);
         Glide.with(mContext)
-                .load(myRequestData.img_url)
+                .load(requestData.img_url)
                 .placeholder(R.drawable.borobudur)
                 .into(holder.mImageView);
-        holder.mBudget.setText(CurrencyHelper.CurrencyHelper(Long.valueOf(myRequestData.budget)));
-        holder.mCountry.setText(String.valueOf(myRequestData.country_id));
+        holder.mBudget.setText(CurrencyHelper.CurrencyHelper(Long.valueOf(requestData.budget)));
+        holder.mCountry.setText(String.valueOf(requestData.country_id));
     }
 
     @Override
     public int getItemCount() {
-        return mMyRequestDataList.size();
+        return mRequestDataList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

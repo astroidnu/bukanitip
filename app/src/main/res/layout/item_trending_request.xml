@@ -10,11 +10,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
+                android:scaleType="fitCenter"
+                android:id="@+id/trending_request_imageview"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@color/colorPrimary"/>
             <TextView
-                android:id="@+id/trending_title"
+                android:id="@+id/trending_request_title"
                 android:fontFamily="sans"
                 android:padding="8dp"
                 android:textStyle="bold"
@@ -23,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:text="Kamera Alexander"/>
             <TextView
+                android:id="@+id/trending_request_country"
                 android:fontFamily="sans"
                 android:padding="8dp"
                 android:textSize="12dp"

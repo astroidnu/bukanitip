@@ -13,6 +13,7 @@ import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllCountryListServ
 import dietbisabesok.com.bukanitip.activity.login.service.LoginService;
 import dietbisabesok.com.bukanitip.activity.login.service.UpdateUserService;
 import dietbisabesok.com.bukanitip.di.scope.ApplicationScope;
+import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllRequestListService;
 import dietbisabesok.com.bukanitip.fragment.myrequest.service.MyRequestService;
 import dietbisabesok.com.bukanitip.network.NetworkService;
 import okhttp3.Cache;
@@ -127,13 +128,13 @@ public class NetworkModule {
         return new MyRequestService(networkService);
     }
 
-//    @Provides
-//    @ApplicationScope
-//    public GetUserLectureScheduleService proGetUserLectureScheduleService(
-//            NetworkService networkService) {
-//        return new GetUserLectureScheduleService(networkService);
-//    }
-//
+    @Provides
+    @ApplicationScope
+    public FetchAllRequestListService provideFetchAllRequestListService(
+            NetworkService networkService) {
+        return new FetchAllRequestListService(networkService);
+    }
+
 //    @Provides
 //    @ApplicationScope
 //    public FetchCalendarAcademicService provideFetchCalendarAcademicService(

@@ -8,6 +8,8 @@ import dietbisabesok.com.bukanitip.activity.addnewrequest.service.AddNewRequestS
 import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllCountryResponse;
 import dietbisabesok.com.bukanitip.activity.home.service.FetchDetailUserResponse;
 import dietbisabesok.com.bukanitip.activity.login.service.LoginResponse;
+import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllRequestListService;
+import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllRequestResponse;
 import dietbisabesok.com.bukanitip.fragment.myrequest.service.MyRequestServiceResponse;
 import dietbisabesok.com.bukanitip.network.response.CommonResponse;
 import retrofit2.http.FieldMap;
@@ -37,7 +39,7 @@ public interface NetworkService {
 
     @POST
     @FormUrlEncoded
-    Observable<CommonResponse>getAllRequest(@Url String url, @FieldMap HashMap<String, String> data);
+    Observable<FetchAllRequestResponse>getAllRequest(@Url String url, @FieldMap HashMap<String, String> data);
 
     @POST
     @FormUrlEncoded

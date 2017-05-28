@@ -13,7 +13,7 @@ import org.androidannotations.annotations.ViewById;
 import java.util.List;
 
 import dietbisabesok.com.bukanitip.R;
-import dietbisabesok.com.bukanitip.data.MyRequestData;
+import dietbisabesok.com.bukanitip.data.RequestData;
 import dietbisabesok.com.bukanitip.fragment.myrequest.adapter.MyRequestAdapter;
 
 /**
@@ -38,7 +38,7 @@ public class MyRequestFragmentView extends CoordinatorLayout {
         mRequestRecyclerView.setAdapter(myRequestAdapter);
     }
 
-    void setData(List<MyRequestData> dataList){
+    void setData(List<RequestData> dataList){
         if(dataList != null){
             myRequestAdapter.setData(dataList);
         }
