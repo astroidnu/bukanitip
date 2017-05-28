@@ -1,8 +1,10 @@
 package dietbisabesok.com.bukanitip.helper;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.support.design.widget.BottomSheetDialog;
 import android.widget.Toast;
 
 /**

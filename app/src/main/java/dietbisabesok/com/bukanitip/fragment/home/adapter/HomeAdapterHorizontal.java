@@ -1,11 +1,13 @@
 package dietbisabesok.com.bukanitip.fragment.home.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dietbisabesok.com.bukanitip.R;
+import dietbisabesok.com.bukanitip.activity.detailrequest.DetailRequestActivity;
 import dietbisabesok.com.bukanitip.data.Address;
 import dietbisabesok.com.bukanitip.data.RequestData;
 
@@ -53,6 +56,14 @@ public class HomeAdapterHorizontal extends RecyclerView.Adapter<HomeAdapterHoriz
                 .load(requestData.img_url)
                 .placeholder(R.drawable.borobudur)
                 .into(holder.mImageView);
+        holder.mItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, DetailRequestActivity.class);
+                intent.putExtra("data", requestData);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -70,11 +81,13 @@ public class HomeAdapterHorizontal extends RecyclerView.Adapter<HomeAdapterHoriz
         TextView mTitle;
         ImageView mImageView;
         TextView mCountry;
+        LinearLayout mItem;
         public ViewHolder(View itemView) {
             super(itemView);
             mTitle = (TextView) itemView.findViewById(R.id.trending_request_title);
             mCountry = (TextView) itemView.findViewById(R.id.trending_request_country);
             mImageView = (ImageView) itemView.findViewById(R.id.trending_request_imageview);
+            mItem = (LinearLayout) itemView.findViewById(R.id.trending_request_item);
 
         }
     }

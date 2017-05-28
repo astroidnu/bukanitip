@@ -1,6 +1,8 @@
 package dietbisabesok.com.bukanitip.activity.showallrequest.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dietbisabesok.com.bukanitip.R;
+import dietbisabesok.com.bukanitip.activity.detailrequest.DetailRequestActivity;
 import dietbisabesok.com.bukanitip.data.RequestData;
 import dietbisabesok.com.bukanitip.data.RequestNitipData;
 import dietbisabesok.com.bukanitip.helper.CurrencyHelper;
@@ -55,6 +58,14 @@ public class ShowAllRequestAdapter extends RecyclerView.Adapter<ShowAllRequestAd
         holder.mBudget.setText(CurrencyHelper.CurrencyHelper(Long.valueOf(requestData.budget)));
         holder.mCountry.setText(requestData.country_name);
         holder.mTitle.setText(requestData.title);
+        holder.mItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, DetailRequestActivity.class);
+                intent.putExtra("data", requestData);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -68,6 +79,7 @@ public class ShowAllRequestAdapter extends RecyclerView.Adapter<ShowAllRequestAd
         TextView mTitle;
         TextView mUsername;
         ImageView mImageView;
+        CardView mItem;
         public ViewHolder(View itemView) {
             super(itemView);
             mBudget = (TextView)itemView.findViewById(R.id.all_request_budget);
@@ -75,6 +87,7 @@ public class ShowAllRequestAdapter extends RecyclerView.Adapter<ShowAllRequestAd
             mTitle = (TextView)itemView.findViewById(R.id.all_request_title);
             mUsername = (TextView)itemView.findViewById(R.id.all_request_username);
             mImageView = (ImageView) itemView.findViewById(R.id.all_request_imageview);
+            mItem = (CardView) itemView.findViewById(R.id.all_request_item);
         }
     }
 }

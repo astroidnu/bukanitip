@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 
+import dietbisabesok.com.bukanitip.data.RequestData;
 import dietbisabesok.com.bukanitip.di.component.AppComponent;
 import dietbisabesok.com.bukanitip.ui.base.BaseActivity;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
@@ -23,7 +24,8 @@ public class DetailRequestActivity extends BaseActivity {
     protected void onCreateUI(Bundle bundle) {
         mView = DetailRequestView_.build(this);
         setContentView(mView);
-        mPresenter = new DetailRequestPresenter(this);
+        RequestData requestData = getIntent().getParcelableExtra("data");
+        mPresenter = new DetailRequestPresenter(this,requestData);
         mComponent.inject(mPresenter);
         mPresenter.takeView(mView);
     }
