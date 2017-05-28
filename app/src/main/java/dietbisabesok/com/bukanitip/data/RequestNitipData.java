@@ -15,6 +15,8 @@ public class RequestNitipData {
     public String bugdet;
     @SerializedName("country_id")
     public String country_id;
+    @SerializedName("shipping_address")
+    public String shipping_address;
 
     public String getTitle() {
         return title;
@@ -46,5 +48,13 @@ public class RequestNitipData {
 
     public void setCountry_id(String country_id) {
         this.country_id = country_id;
+    }
+
+    public String getShipping_address() {
+        return shipping_address;
+    }
+
+    public void setShipping_address(String shipping_address) {
+        this.shipping_address = shipping_address;
     }
 }

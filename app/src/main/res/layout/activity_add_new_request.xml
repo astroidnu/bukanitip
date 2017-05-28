@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/colorWhite"
@@ -14,6 +15,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <Button
+        android:layout_alignParentBottom="true"
         android:id="@+id/new_request_submit"
         android:textSize="16dp"
         android:textColor="@color/colorWhite"
@@ -24,6 +26,7 @@
         android:text="Submit"/>
 
     <android.support.v4.widget.NestedScrollView
+        android:layout_above="@+id/new_request_submit"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -105,7 +108,24 @@
                     android:inputType="numberDecimal"
                     android:paddingBottom="12dp" />
             </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/new_request_shipping_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Shipping Address"
+                    android:inputType="text"
+                    android:paddingBottom="12dp" />
+            </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

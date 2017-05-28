@@ -35,6 +35,8 @@ public class AddNewRequestView extends CoordinatorLayout {
     EditText mDescriptionReq;
     @ViewById(R.id.new_request_title)
     EditText mTitleReq;
+    @ViewById(R.id.new_request_shipping_address)
+    EditText mShippingAddress;
     @ViewById(R.id.new_request_submit)
     Button mSubmitReq;
 

@@ -62,6 +62,7 @@ public class AddNewRequestPresenter extends ViewPresenter<AddNewRequestView> {
     private boolean mIsDescriptionValid = false;
     private boolean mIsCountryValid = false;
     private boolean mIsPictureValid = false;
+    private boolean mIsShippingAddressValid = false;
     private String mRequestPhotoPath = null;
 
     public AddNewRequestPresenter(AddNewRequestActivity addNewRequestActivity) {
@@ -96,7 +97,7 @@ public class AddNewRequestPresenter extends ViewPresenter<AddNewRequestView> {
                 getView().mProgressDialog.show();
                 HashMap<String, String> mParam = new HashMap<>();
                 requestNitip();
-                if(mIsPictureValid && mIsBudgetValid && mIsCountryValid && mIsDescriptionValid && mIsTitleValid){
+                if(mIsPictureValid && mIsBudgetValid && mIsCountryValid && mIsDescriptionValid && mIsTitleValid && mIsShippingAddressValid){
                     mParam.put("email",mLoginSession.getEmail());
                     mParam.put("token",mLoginSession.getLoginToken());
                     mParam.put("user_id", mLoginSession.getUserID());
@@ -140,6 +141,7 @@ public class AddNewRequestPresenter extends ViewPresenter<AddNewRequestView> {
         isValidTitle(getView().mTitleReq.getText().toString());
         isValidDescription(getView().mDescriptionReq.getText().toString());
         isValidCountry(getView().mCountryReq.getText().toString());
+        isValidShippingAddress(getView().mShippingAddress.getText().toString());
         Log.d(getClass().getName(),gson.toJson(mRequestNitipData));
     }
 
@@ -194,6 +196,15 @@ public class AddNewRequestPresenter extends ViewPresenter<AddNewRequestView> {
             return mIsPictureValid = true;
         }else{
             return mIsPictureValid = false;
+        }
+    }
+
+    public boolean isValidShippingAddress(String address){
+        if(address != null){
+            mRequestNitipData.setShipping_address(address);
+            return mIsShippingAddressValid = true;
+        }else{
+            return mIsShippingAddressValid = false;
         }
     }
 
