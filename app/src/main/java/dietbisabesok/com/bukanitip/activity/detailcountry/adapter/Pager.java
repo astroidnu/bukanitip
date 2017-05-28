@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import dietbisabesok.com.bukanitip.fragment.diaspora.DiasporaFragment;
 import dietbisabesok.com.bukanitip.fragment.myrequest.MyRequestFragment;
 
 /**
@@ -32,11 +33,11 @@ public class Pager extends FragmentStatePagerAdapter {
         //Returning the current tabs
         switch (position) {
             case 0:
-                MyRequestFragment tab1 = new MyRequestFragment();
-                return tab1;
+                MyRequestFragment myRequestFragment = new MyRequestFragment();
+                return myRequestFragment;
             case 1:
-                MyRequestFragment tab2 = new MyRequestFragment();
-                return tab2;
+                DiasporaFragment diasporaFragment = new DiasporaFragment();
+                return diasporaFragment;
             default:
                 return null;
         }

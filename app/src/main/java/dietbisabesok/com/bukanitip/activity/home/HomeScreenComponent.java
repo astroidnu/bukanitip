@@ -2,6 +2,8 @@ package dietbisabesok.com.bukanitip.activity.home;
 
 import dagger.Component;
 import dietbisabesok.com.bukanitip.di.component.AppComponent;
+import dietbisabesok.com.bukanitip.fragment.diaspora.DiasporaFragment;
+import dietbisabesok.com.bukanitip.fragment.diaspora.DiasporaPresenter;
 import dietbisabesok.com.bukanitip.fragment.home.HomeFragment;
 import dietbisabesok.com.bukanitip.fragment.home.HomeFragmentPresenter;
 import dietbisabesok.com.bukanitip.fragment.home.adapter.ItemSectionAdapter;
@@ -28,4 +30,6 @@ public interface HomeScreenComponent {
     void inject(MyRequestFragment myRequestFragment);
     void inject(MyTripFragmentPresenter mPresenter);
     void inject(MyTripFragment myTripFragment);
+    void inject(DiasporaFragment diasporaFragment);
+    void inject(DiasporaPresenter mPresenter);
 }
