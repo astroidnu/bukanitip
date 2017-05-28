@@ -31,6 +31,9 @@ public class RequestData implements Parcelable {
     public int jumlah_offering;
     @SerializedName("trending")
     public int trending;
+    @SerializedName("country_name")
+    public String country_name;
+
 
     protected RequestData(Parcel in) {
         id = in.readLong();
@@ -42,12 +45,13 @@ public class RequestData implements Parcelable {
         img_url = in.readString();
         jumlah_offering = in.readInt();
         trending = in.readInt();
+        country_name = in.readString();
     }
 
-    @Generated(hash = 1093821916)
+    @Generated(hash = 1696527237)
     public RequestData(long id, String title, String description, String budget,
             int status, int country_id, String img_url, int jumlah_offering,
-            int trending) {
+            int trending, String country_name) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -57,6 +61,7 @@ public class RequestData implements Parcelable {
         this.img_url = img_url;
         this.jumlah_offering = jumlah_offering;
         this.trending = trending;
+        this.country_name = country_name;
     }
 
     @Generated(hash = 1553600173)
@@ -147,6 +152,14 @@ public class RequestData implements Parcelable {
         this.trending = trending;
     }
 
+    public String getCountry_name() {
+        return country_name;
+    }
+
+    public void setCountry_name(String country_name) {
+        this.country_name = country_name;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -163,5 +176,6 @@ public class RequestData implements Parcelable {
         dest.writeString(img_url);
         dest.writeInt(jumlah_offering);
         dest.writeInt(trending);
+        dest.writeString(country_name);
     }
 }

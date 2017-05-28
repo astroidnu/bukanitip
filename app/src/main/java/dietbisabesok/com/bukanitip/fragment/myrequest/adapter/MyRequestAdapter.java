@@ -51,7 +51,7 @@ public class MyRequestAdapter extends RecyclerView.Adapter<MyRequestAdapter.View
                 .placeholder(R.drawable.borobudur)
                 .into(holder.mImageView);
         holder.mBudget.setText(CurrencyHelper.CurrencyHelper(Long.valueOf(requestData.budget)));
-        holder.mCountry.setText(String.valueOf(requestData.country_id));
+        holder.mCountry.setText(requestData.country_name);
     }
 
     @Override

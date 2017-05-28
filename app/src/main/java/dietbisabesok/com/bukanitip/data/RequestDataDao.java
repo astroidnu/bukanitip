@@ -31,6 +31,7 @@ public class RequestDataDao extends AbstractDao<RequestData, Void> {
         public final static Property Img_url = new Property(6, String.class, "img_url", false, "IMG_URL");
         public final static Property Jumlah_offering = new Property(7, int.class, "jumlah_offering", false, "JUMLAH_OFFERING");
         public final static Property Trending = new Property(8, int.class, "trending", false, "TRENDING");
+        public final static Property Country_name = new Property(9, String.class, "country_name", false, "COUNTRY_NAME");
     }
 
 
@@ -54,7 +55,8 @@ public class RequestDataDao extends AbstractDao<RequestData, Void> {
                 "\"COUNTRY_ID\" INTEGER NOT NULL ," + // 5: country_id
                 "\"IMG_URL\" TEXT," + // 6: img_url
                 "\"JUMLAH_OFFERING\" INTEGER NOT NULL ," + // 7: jumlah_offering
-                "\"TRENDING\" INTEGER NOT NULL );"); // 8: trending
+                "\"TRENDING\" INTEGER NOT NULL ," + // 8: trending
+                "\"COUNTRY_NAME\" TEXT);"); // 9: country_name
     }
 
     /** Drops the underlying database table. */
@@ -91,6 +93,11 @@ public class RequestDataDao extends AbstractDao<RequestData, Void> {
         }
         stmt.bindLong(8, entity.getJumlah_offering());
         stmt.bindLong(9, entity.getTrending());
+ 
+        String country_name = entity.getCountry_name();
+        if (country_name != null) {
+            stmt.bindString(10, country_name);
+        }
     }
 
     @Override
@@ -121,6 +128,11 @@ public class RequestDataDao extends AbstractDao<RequestData, Void> {
         }
         stmt.bindLong(8, entity.getJumlah_offering());
         stmt.bindLong(9, entity.getTrending());
+ 
+        String country_name = entity.getCountry_name();
+        if (country_name != null) {
+            stmt.bindString(10, country_name);
+        }
     }
 
     @Override
@@ -139,7 +151,8 @@ public class RequestDataDao extends AbstractDao<RequestData, Void> {
             cursor.getInt(offset + 5), // country_id
             cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // img_url
             cursor.getInt(offset + 7), // jumlah_offering
-            cursor.getInt(offset + 8) // trending
+            cursor.getInt(offset + 8), // trending
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9) // country_name
         );
         return entity;
     }
@@ -155,6 +168,7 @@ public class RequestDataDao extends AbstractDao<RequestData, Void> {
         entity.setImg_url(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
         entity.setJumlah_offering(cursor.getInt(offset + 7));
         entity.setTrending(cursor.getInt(offset + 8));
+        entity.setCountry_name(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
      }
     
     @Override

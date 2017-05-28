@@ -47,7 +47,7 @@ public class HomeAdapterHorizontal extends RecyclerView.Adapter<HomeAdapterHoriz
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         RequestData requestData= mRequestDataList.get(position);
-        holder.mCountry.setText(String.valueOf(requestData.country_id));
+        holder.mCountry.setText(requestData.country_name);
         holder.mTitle.setText(requestData.title);
         Glide.with(mContext)
                 .load(requestData.img_url)
