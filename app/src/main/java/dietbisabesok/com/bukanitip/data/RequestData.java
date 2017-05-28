@@ -39,10 +39,13 @@ public class RequestData implements Parcelable {
     public int jumlah_offering;
     @SerializedName("trending")
     public int trending;
+    @SerializedName("status_titipan")
+    public int status_titipan;
     @SerializedName("shipping_address")
     public String shipping_address;
     @SerializedName("country_name")
     public String country_name;
+
 
     protected RequestData(Parcel in) {
         id = in.readLong();
@@ -54,14 +57,16 @@ public class RequestData implements Parcelable {
         img_url = in.readString();
         jumlah_offering = in.readInt();
         trending = in.readInt();
+        status_titipan = in.readInt();
         shipping_address = in.readString();
         country_name = in.readString();
     }
 
-    @Generated(hash = 1040941364)
+    @Generated(hash = 48549114)
     public RequestData(long id, String title, String description, String budget,
             int status, int country_id, String img_url, int jumlah_offering,
-            int trending, String shipping_address, String country_name) {
+            int trending, int status_titipan, String shipping_address,
+            String country_name) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -71,6 +76,7 @@ public class RequestData implements Parcelable {
         this.img_url = img_url;
         this.jumlah_offering = jumlah_offering;
         this.trending = trending;
+        this.status_titipan = status_titipan;
         this.shipping_address = shipping_address;
         this.country_name = country_name;
     }
@@ -107,6 +113,7 @@ public class RequestData implements Parcelable {
         dest.writeString(img_url);
         dest.writeInt(jumlah_offering);
         dest.writeInt(trending);
+        dest.writeInt(status_titipan);
         dest.writeString(shipping_address);
         dest.writeString(country_name);
     }
@@ -181,6 +188,14 @@ public class RequestData implements Parcelable {
 
     public void setTrending(int trending) {
         this.trending = trending;
+    }
+
+    public int getStatus_titipan() {
+        return status_titipan;
+    }
+
+    public void setStatus_titipan(int status_titipan) {
+        this.status_titipan = status_titipan;
     }
 
     public String getShipping_address() {
