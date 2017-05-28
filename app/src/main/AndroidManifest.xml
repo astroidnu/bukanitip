@@ -28,6 +28,8 @@
         <activity android:name=".activity.showallcountry.ShowAllCountriesActivity"/>
         <activity android:name=".activity.addnewrequest.AddNewRequestActivity"/>
         <activity android:name=".activity.showallrequest.ShowAllRequestActivity"/>
+        <activity android:name=".activity.detailcountry.DetailCountryActivity"/>
+        <activity android:name=".activity.detailrequest.DetailRequestActivity"/>
     </application>
 
 </manifest>

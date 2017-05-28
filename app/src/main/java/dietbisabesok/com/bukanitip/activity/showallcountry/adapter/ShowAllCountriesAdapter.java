@@ -1,6 +1,7 @@
 package dietbisabesok.com.bukanitip.activity.showallcountry.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dietbisabesok.com.bukanitip.R;
+import dietbisabesok.com.bukanitip.activity.detailcountry.DetailCountryActivity;
 import dietbisabesok.com.bukanitip.data.CountryData;
 
 /**
@@ -57,7 +59,9 @@ public class ShowAllCountriesAdapter extends RecyclerView.Adapter<ShowAllCountri
         holder.mAllCountriesFrame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext,countryData.getName(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, DetailCountryActivity.class);
+                intent.putExtra("data",countryData);
+                mContext.startActivity(intent);
             }
         });
     }

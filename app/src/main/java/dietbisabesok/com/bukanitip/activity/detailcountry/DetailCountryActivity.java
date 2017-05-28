@@ -1,4 +1,4 @@
-package dietbisabesok.com.bukanitip.activity.detailrequest;
+package dietbisabesok.com.bukanitip.activity.detailcountry;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 
+import dietbisabesok.com.bukanitip.data.CountryData;
 import dietbisabesok.com.bukanitip.di.component.AppComponent;
 import dietbisabesok.com.bukanitip.ui.base.BaseActivity;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
@@ -15,22 +16,24 @@ import dietbisabesok.com.bukanitip.ui.navigation.ActivityScreen;
  * Created by ibnumuzzakkir on 5/28/17.
  */
 
-public class DetailRequestActivity extends BaseActivity {
-    private DetailRequestPresenter mPresenter;
-    private DetailRequestView mView;
-    private DetailRequestComponent mComponent;
+public class DetailCountryActivity extends BaseActivity {
+
+    private DetailCountryComponent mComponent;
+    private DetailCountryPresenter mPresenter;
+    private DetailCountryView mView;
     @Override
     protected void onCreateUI(Bundle bundle) {
-        mView = DetailRequestView_.build(this);
+        mView = DetailCountryView_.build(this);
         setContentView(mView);
-        mPresenter = new DetailRequestPresenter(this);
+        CountryData countryData = getIntent().getParcelableExtra("data");
+        mPresenter = new DetailCountryPresenter(this,countryData);
         mComponent.inject(mPresenter);
         mPresenter.takeView(mView);
     }
 
     @Override
     protected void onCreateComponent(AppComponent appComponent) {
-        mComponent = DaggerDetailRequestComponent.builder().appComponent(appComponent).build();
+        mComponent = DaggerDetailCountryComponent.builder().appComponent(appComponent).build();
         mComponent.inject(this);
     }
 
@@ -57,7 +60,7 @@ public class DetailRequestActivity extends BaseActivity {
 
         @Override
         protected Class<? extends Activity> activityClass() {
-            return DetailRequestActivity.class;
+            return DetailCountryActivity.class;
         }
     }
 }

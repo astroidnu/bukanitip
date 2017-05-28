@@ -9,4 +9,6 @@ import dietbisabesok.com.bukanitip.di.component.AppComponent;
 @DetailRequestScope
 @Component(dependencies = {AppComponent.class})
 public interface DetailRequestComponent {
+    void inject(DetailRequestActivity activity);
+    void inject(DetailRequestPresenter mPresenter);
 }
