@@ -14,6 +14,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
@@ -22,17 +23,21 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import dietbisabesok.com.bukanitip.R;
 import dietbisabesok.com.bukanitip.activity.addnewrequest.service.AddNewRequestResponse;
 import dietbisabesok.com.bukanitip.activity.addnewrequest.service.AddNewRequestService;
+import dietbisabesok.com.bukanitip.data.CountryData;
 import dietbisabesok.com.bukanitip.data.RequestNitipData;
 import dietbisabesok.com.bukanitip.helper.AppConst;
 import dietbisabesok.com.bukanitip.helper.ImageHelper;
 import dietbisabesok.com.bukanitip.helper.UIHelper;
+import dietbisabesok.com.bukanitip.model.CountryDataModel;
 import dietbisabesok.com.bukanitip.network.NetworkError;
 import dietbisabesok.com.bukanitip.session.LoginSession;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
@@ -53,6 +58,9 @@ public class AddNewRequestPresenter extends ViewPresenter<AddNewRequestView> {
     @Inject
     AddNewRequestService mAddNewRequestService;
 
+    @Inject
+    CountryDataModel mCountryDataModel;
+
     private static final int REQUEST_READ_EXTERNAL_FILE_PERMISSION = 0x100;
 
     private AddNewRequestActivity mActivity;
@@ -64,6 +72,7 @@ public class AddNewRequestPresenter extends ViewPresenter<AddNewRequestView> {
     private boolean mIsPictureValid = false;
     private boolean mIsShippingAddressValid = false;
     private String mRequestPhotoPath = null;
+    private List<String> countries = new ArrayList<>();
 
     public AddNewRequestPresenter(AddNewRequestActivity addNewRequestActivity) {
         mActivity  = addNewRequestActivity;
@@ -73,6 +82,12 @@ public class AddNewRequestPresenter extends ViewPresenter<AddNewRequestView> {
     public void onLoad(){
         super.onLoad();
         onFinishActivity();
+        for(CountryData countryData :mCountryDataModel.loadAll()){
+            countries.add(countryData.getName());
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(mActivity, android.R.layout.simple_spinner_item,countries);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        getView().mCountrySpinner.setAdapter(adapter);
         getView().mChoosePictureReq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,7 +155,7 @@ public class AddNewRequestPresenter extends ViewPresenter<AddNewRequestView> {
         isBugdetValid(getView().mBudgetReq.getText().toString());
         isValidTitle(getView().mTitleReq.getText().toString());
         isValidDescription(getView().mDescriptionReq.getText().toString());
-        isValidCountry(getView().mCountryReq.getText().toString());
+        isValidCountry(getView().mCountrySpinner.getSelectedItem().toString());
         isValidShippingAddress(getView().mShippingAddress.getText().toString());
         Log.d(getClass().getName(),gson.toJson(mRequestNitipData));
     }
@@ -184,7 +199,7 @@ public class AddNewRequestPresenter extends ViewPresenter<AddNewRequestView> {
 
     public boolean isValidCountry(String title){
         if(title.length() > 3){
-            mRequestNitipData.setCountry_id(String.valueOf(1));
+            mRequestNitipData.setCountry_id(String.valueOf(mCountryDataModel.loadCountryID(title)));
             return mIsCountryValid = true;
         }else{
             return mIsCountryValid = false;

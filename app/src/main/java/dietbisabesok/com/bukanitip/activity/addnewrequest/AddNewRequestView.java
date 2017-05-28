@@ -6,6 +6,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,8 @@ public class AddNewRequestView extends CoordinatorLayout {
     EditText mShippingAddress;
     @ViewById(R.id.new_request_submit)
     Button mSubmitReq;
+    @ViewById(R.id.new_request_spinner)
+    Spinner mCountrySpinner;
 
     public ProgressDialog mProgressDialog;
     public AddNewRequestView(Context context) {

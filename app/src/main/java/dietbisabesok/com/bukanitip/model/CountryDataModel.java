@@ -27,6 +27,10 @@ public class CountryDataModel extends BaseModel {
         return mEntityDao.loadAll();
     }
 
+    public long loadCountryID(String country){
+        return mEntityDao.queryBuilder().where(CountryDataDao.Properties.Name.eq(country)).list().get(0).getId();
+    }
+
     @Nullable
     public List<CountryData> loadTrendyCountryData() {
         return mEntityDao.queryBuilder().where(CountryDataDao.Properties.Favorite.eq(1))
