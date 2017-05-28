@@ -12,78 +12,7 @@
             layout="@layout/activity_toolbar"
             android:id="@+id/new_request_toolbar"/>
     </android.support.design.widget.AppBarLayout>
-    <android.support.v4.widget.NestedScrollView
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageButton
-                android:id="@+id/new_request_choose_picture"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:background="@color/colorPrimary"/>
-            <android.support.design.widget.TextInputLayout
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:maxLines="1"
-                    android:inputType="text"
-                    android:id="@+id/new_request_title"
-                    android:paddingBottom="12dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Title"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:id="@+id/new_request_country"
-                    android:paddingBottom="12dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Country"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:id="@+id/new_request_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Description"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:inputType="numberDecimal"
-                    android:id="@+id/new_request_bugdet"
-                    android:paddingBottom="12dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Budget"/>
-            </android.support.design.widget.TextInputLayout>
-        </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
     <Button
         android:id="@+id/new_request_submit"
         android:textSize="16dp"
@@ -93,4 +22,90 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageButton
+                android:src="@drawable/ic_camera_white_48dp"
+                android:id="@+id/new_request_choose_picture"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:background="@color/colorPrimary" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </ScrollView>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/new_request_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Title"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingBottom="12dp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/new_request_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Country"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingBottom="12dp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/new_request_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Description" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/new_request_bugdet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Budget"
+                    android:inputType="numberDecimal"
+                    android:paddingBottom="12dp" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

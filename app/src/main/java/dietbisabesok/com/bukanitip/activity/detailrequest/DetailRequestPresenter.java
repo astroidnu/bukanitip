@@ -4,17 +4,29 @@ import android.view.View;
 
 import com.bumptech.glide.Glide;
 
+import javax.inject.Inject;
+
 import dietbisabesok.com.bukanitip.R;
+import dietbisabesok.com.bukanitip.activity.addnewoffering.AddNewOfferingActivity;
+import dietbisabesok.com.bukanitip.activity.addnewoffering.service.AddOfferingService;
+import dietbisabesok.com.bukanitip.activity.addnewrequest.AddNewRequestActivity;
 import dietbisabesok.com.bukanitip.data.RequestData;
 import dietbisabesok.com.bukanitip.helper.CurrencyHelper;
-import dietbisabesok.com.bukanitip.helper.UIHelper;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
+import dietbisabesok.com.bukanitip.ui.navigation.ActivityScreen;
+import dietbisabesok.com.bukanitip.ui.navigation.ActivityScreenSwitcher;
 
 /**
  * Created by ibnumuzzakkir on 5/28/17.
  */
 
 public class DetailRequestPresenter extends ViewPresenter<DetailRequestView> {
+    @Inject
+    AddOfferingService mAddOfferingService;
+
+    @Inject
+    ActivityScreenSwitcher mActivityScreenSwitcher;
+
     private DetailRequestActivity mActivity;
     private RequestData mRequestData;
     private String status = null;
@@ -42,6 +54,12 @@ public class DetailRequestPresenter extends ViewPresenter<DetailRequestView> {
         }
         getView().mRequestStatus.setText(status);
         onFinishActivity();
+        getView().mBtnAddOffer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mActivityScreenSwitcher.open(new AddNewOfferingActivity.Screen(mRequestData));
+            }
+        });
     }
 
     private void onFinishActivity(){

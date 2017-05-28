@@ -6,13 +6,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="dietbisabesok.com.bukanitip.activity.SplashScreen">
-    <TextView
-        android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textAlignment="center"
-        android:text="Splash Screen"
+    <ImageView
+        android:src="@drawable/splash"
         android:layout_centerInParent="true"
+        android:layout_width="280dp"
+        android:layout_height="150dp" />
+    <LinearLayout
+        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="12dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Diet Bisa Besok Team"/>
+        <TextView
+            android:textSize="10dp"
+            android:textColor="@color/colorWhite"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2017"/>
+    </LinearLayout>
+
 </RelativeLayout>

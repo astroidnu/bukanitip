@@ -8,7 +8,8 @@ import java.io.File;
 
 import dagger.Component;
 import dietbisabesok.com.bukanitip.activity.addnewrequest.service.AddNewRequestService;
-import dietbisabesok.com.bukanitip.data.RequestDataDao;
+import dietbisabesok.com.bukanitip.activity.addnewoffering.service.AddOfferingService;
+import dietbisabesok.com.bukanitip.fragment.profile.service.FetchDetailUserService;
 import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllCountryListService;
 import dietbisabesok.com.bukanitip.activity.login.service.LoginService;
 import dietbisabesok.com.bukanitip.activity.login.service.UpdateUserService;
@@ -56,6 +57,8 @@ public interface AppComponent extends IAppComponent {
     AddNewRequestService addNewRequestService();
     MyRequestService myRequestService();
     FetchAllRequestListService fetchAllRequestListService();
+    FetchDetailUserService fetchDetailUserService();
+    AddOfferingService addOfferingService();
 
     /*Model DB*/
     CountryDataModel countryDataModel();

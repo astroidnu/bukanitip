@@ -32,6 +32,7 @@ public class LoginSession {
     private final String PREF_USERID = "userid";
     private final String PREF_USEREMAIL = "email";
 
+
     private class Pref extends BaseSharedPreferences {
 
         private Pref() {

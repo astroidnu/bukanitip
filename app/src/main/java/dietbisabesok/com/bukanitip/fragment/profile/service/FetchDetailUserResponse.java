@@ -1,4 +1,4 @@
-package dietbisabesok.com.bukanitip.activity.home.service;
+package dietbisabesok.com.bukanitip.fragment.profile.service;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -4,11 +4,10 @@ package dietbisabesok.com.bukanitip.network;
 import java.util.HashMap;
 
 import dietbisabesok.com.bukanitip.activity.addnewrequest.service.AddNewRequestResponse;
-import dietbisabesok.com.bukanitip.activity.addnewrequest.service.AddNewRequestService;
+import dietbisabesok.com.bukanitip.activity.addnewoffering.service.AddOfferingResponse;
 import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllCountryResponse;
-import dietbisabesok.com.bukanitip.activity.home.service.FetchDetailUserResponse;
+import dietbisabesok.com.bukanitip.fragment.profile.service.FetchDetailUserResponse;
 import dietbisabesok.com.bukanitip.activity.login.service.LoginResponse;
-import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllRequestListService;
 import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllRequestResponse;
 import dietbisabesok.com.bukanitip.fragment.myrequest.service.MyRequestServiceResponse;
 import dietbisabesok.com.bukanitip.network.response.CommonResponse;
@@ -60,6 +59,10 @@ public interface NetworkService {
     @POST
     @FormUrlEncoded
     Observable<CommonResponse>getListMyOffering(@Url String url, @FieldMap HashMap<String, String> data);
+
+    @POST
+    @FormUrlEncoded
+    Observable<AddOfferingResponse>postOffering(@Url String url, @FieldMap HashMap<String, String> data);
 
     @POST
     @FormUrlEncoded

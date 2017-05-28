@@ -36,7 +36,6 @@ public class DetailCountryPresenter extends ViewPresenter<DetailCountryView> imp
 
         getView().mTabLayout.addOnTabSelectedListener(this);
         getView().mDetailContainer.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(getView().mTabLayout));
-
     }
 
     private void onFinishActivity() {

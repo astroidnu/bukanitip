@@ -30,6 +30,7 @@
         <activity android:name=".activity.showallrequest.ShowAllRequestActivity"/>
         <activity android:name=".activity.detailcountry.DetailCountryActivity"/>
         <activity android:name=".activity.detailrequest.DetailRequestActivity"/>
+        <activity android:name=".activity.addnewoffering.AddNewOfferingActivity"/>
     </application>
 
 </manifest>
