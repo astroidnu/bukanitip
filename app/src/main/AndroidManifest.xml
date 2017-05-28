@@ -31,6 +31,7 @@
         <activity android:name=".activity.detailcountry.DetailCountryActivity"/>
         <activity android:name=".activity.detailrequest.DetailRequestActivity"/>
         <activity android:name=".activity.addnewoffering.AddNewOfferingActivity"/>
+        <activity android:name=".activity.listoffering.ListOfferingActivity"/>
     </application>
 
 </manifest>

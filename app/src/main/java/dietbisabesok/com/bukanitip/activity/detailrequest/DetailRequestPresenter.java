@@ -10,6 +10,7 @@ import dietbisabesok.com.bukanitip.R;
 import dietbisabesok.com.bukanitip.activity.addnewoffering.AddNewOfferingActivity;
 import dietbisabesok.com.bukanitip.activity.addnewoffering.service.AddOfferingService;
 import dietbisabesok.com.bukanitip.activity.addnewrequest.AddNewRequestActivity;
+import dietbisabesok.com.bukanitip.activity.listoffering.ListOfferingActivity;
 import dietbisabesok.com.bukanitip.data.RequestData;
 import dietbisabesok.com.bukanitip.helper.CurrencyHelper;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
@@ -58,6 +59,13 @@ public class DetailRequestPresenter extends ViewPresenter<DetailRequestView> {
             @Override
             public void onClick(View v) {
                 mActivityScreenSwitcher.open(new AddNewOfferingActivity.Screen(mRequestData));
+            }
+        });
+
+        getView().mBtnListOffer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mActivityScreenSwitcher.open(new ListOfferingActivity.Screen());
             }
         });
     }
