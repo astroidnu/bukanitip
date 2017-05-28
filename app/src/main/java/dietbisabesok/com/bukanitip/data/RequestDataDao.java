@@ -13,7 +13,7 @@ import org.greenrobot.greendao.database.DatabaseStatement;
 /** 
  * DAO for table "REQUEST_DATA".
 */
-public class RequestDataDao extends AbstractDao<RequestData, Void> {
+public class RequestDataDao extends AbstractDao<RequestData, Long> {
 
     public static final String TABLENAME = "REQUEST_DATA";
 
@@ -22,7 +22,7 @@ public class RequestDataDao extends AbstractDao<RequestData, Void> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property Id = new Property(0, long.class, "id", false, "ID");
+        public final static Property Id = new Property(0, long.class, "id", true, "_id");
         public final static Property Title = new Property(1, String.class, "title", false, "TITLE");
         public final static Property Description = new Property(2, String.class, "description", false, "DESCRIPTION");
         public final static Property Budget = new Property(3, String.class, "budget", false, "BUDGET");
@@ -47,7 +47,7 @@ public class RequestDataDao extends AbstractDao<RequestData, Void> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"REQUEST_DATA\" (" + //
-                "\"ID\" INTEGER NOT NULL ," + // 0: id
+                "\"_id\" INTEGER PRIMARY KEY NOT NULL UNIQUE ," + // 0: id
                 "\"TITLE\" TEXT," + // 1: title
                 "\"DESCRIPTION\" TEXT," + // 2: description
                 "\"BUDGET\" TEXT," + // 3: budget
@@ -136,8 +136,8 @@ public class RequestDataDao extends AbstractDao<RequestData, Void> {
     }
 
     @Override
-    public Void readKey(Cursor cursor, int offset) {
-        return null;
+    public Long readKey(Cursor cursor, int offset) {
+        return cursor.getLong(offset + 0);
     }    
 
     @Override
@@ -172,20 +172,23 @@ public class RequestDataDao extends AbstractDao<RequestData, Void> {
      }
     
     @Override
-    protected final Void updateKeyAfterInsert(RequestData entity, long rowId) {
-        // Unsupported or missing PK type
-        return null;
+    protected final Long updateKeyAfterInsert(RequestData entity, long rowId) {
+        entity.setId(rowId);
+        return rowId;
     }
     
     @Override
-    public Void getKey(RequestData entity) {
-        return null;
+    public Long getKey(RequestData entity) {
+        if(entity != null) {
+            return entity.getId();
+        } else {
+            return null;
+        }
     }
 
     @Override
     public boolean hasKey(RequestData entity) {
-        // TODO
-        return false;
+        throw new UnsupportedOperationException("Unsupported for entities with a non-null key");
     }
 
     @Override

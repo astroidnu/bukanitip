@@ -1,6 +1,10 @@
 package dietbisabesok.com.bukanitip.activity.showallrequest;
 
-import dietbisabesok.com.bukanitip.activity.showallcountry.ShowAllCountriesView;
+import android.view.View;
+
+import javax.inject.Inject;
+
+import dietbisabesok.com.bukanitip.model.RequestDataModel;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
 
 /**
@@ -8,6 +12,9 @@ import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
  */
 
 public class ShowAllRequestPresenter extends ViewPresenter<ShowAllRequestView> {
+    @Inject
+    RequestDataModel mRequestDataModel;
+
     private ShowAllRequestActivity mActivity;
     public ShowAllRequestPresenter(ShowAllRequestActivity showAllRequestActivity) {
         mActivity = showAllRequestActivity;
@@ -15,5 +22,16 @@ public class ShowAllRequestPresenter extends ViewPresenter<ShowAllRequestView> {
     @Override
     public void onLoad(){
         super.onLoad();
+        onFinishActivity();
+        getView().setData(mRequestDataModel.loadAll());
+    }
+
+    private void onFinishActivity(){
+        getView().mArrowLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mActivity.finish();
+            }
+        });
     }
 }

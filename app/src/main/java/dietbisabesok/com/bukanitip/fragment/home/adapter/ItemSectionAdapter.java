@@ -28,6 +28,7 @@ import javax.inject.Inject;
 
 import dietbisabesok.com.bukanitip.R;
 import dietbisabesok.com.bukanitip.activity.showallcountry.ShowAllCountriesActivity;
+import dietbisabesok.com.bukanitip.activity.showallrequest.ShowAllRequestActivity;
 import dietbisabesok.com.bukanitip.data.Address;
 import dietbisabesok.com.bukanitip.data.Country;
 import dietbisabesok.com.bukanitip.data.CountryData;
@@ -136,7 +137,8 @@ public class ItemSectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             mShowAll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, "Show All", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(mContext, ShowAllRequestActivity.class);
+                    mContext.startActivity(intent);
                 }
             });
         }
