@@ -10,6 +10,10 @@ import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Unique;
 
+import java.util.List;
+
+import javax.inject.Scope;
+
 /**
  * Created by ibnumuzzakkir on 5/28/17.
  */
@@ -35,9 +39,10 @@ public class RequestData implements Parcelable {
     public int jumlah_offering;
     @SerializedName("trending")
     public int trending;
+    @SerializedName("shipping_address")
+    public String shipping_address;
     @SerializedName("country_name")
     public String country_name;
-
 
     protected RequestData(Parcel in) {
         id = in.readLong();
@@ -49,13 +54,14 @@ public class RequestData implements Parcelable {
         img_url = in.readString();
         jumlah_offering = in.readInt();
         trending = in.readInt();
+        shipping_address = in.readString();
         country_name = in.readString();
     }
 
-    @Generated(hash = 1696527237)
+    @Generated(hash = 1040941364)
     public RequestData(long id, String title, String description, String budget,
             int status, int country_id, String img_url, int jumlah_offering,
-            int trending, String country_name) {
+            int trending, String shipping_address, String country_name) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -65,6 +71,7 @@ public class RequestData implements Parcelable {
         this.img_url = img_url;
         this.jumlah_offering = jumlah_offering;
         this.trending = trending;
+        this.shipping_address = shipping_address;
         this.country_name = country_name;
     }
 
@@ -83,6 +90,26 @@ public class RequestData implements Parcelable {
             return new RequestData[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeString(title);
+        dest.writeString(description);
+        dest.writeString(budget);
+        dest.writeInt(status);
+        dest.writeInt(country_id);
+        dest.writeString(img_url);
+        dest.writeInt(jumlah_offering);
+        dest.writeInt(trending);
+        dest.writeString(shipping_address);
+        dest.writeString(country_name);
+    }
 
     public long getId() {
         return id;
@@ -156,30 +183,19 @@ public class RequestData implements Parcelable {
         this.trending = trending;
     }
 
+    public String getShipping_address() {
+        return shipping_address;
+    }
+
+    public void setShipping_address(String shipping_address) {
+        this.shipping_address = shipping_address;
+    }
+
     public String getCountry_name() {
         return country_name;
     }
 
     public void setCountry_name(String country_name) {
         this.country_name = country_name;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeLong(id);
-        dest.writeString(title);
-        dest.writeString(description);
-        dest.writeString(budget);
-        dest.writeInt(status);
-        dest.writeInt(country_id);
-        dest.writeString(img_url);
-        dest.writeInt(jumlah_offering);
-        dest.writeInt(trending);
-        dest.writeString(country_name);
     }
 }

@@ -10,6 +10,7 @@ import dagger.Provides;
 import dietbisabesok.com.bukanitip.BuildConfig;
 import dietbisabesok.com.bukanitip.activity.addnewrequest.service.AddNewRequestService;
 import dietbisabesok.com.bukanitip.activity.addnewoffering.service.AddOfferingService;
+import dietbisabesok.com.bukanitip.activity.detailrequest.service.DetailRequestService;
 import dietbisabesok.com.bukanitip.fragment.profile.service.FetchDetailUserService;
 import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllCountryListService;
 import dietbisabesok.com.bukanitip.activity.login.service.LoginService;
@@ -150,13 +151,13 @@ public class NetworkModule {
             NetworkService networkService) {
         return new AddOfferingService(networkService);
     }
-//
-//    @Provides
-//    @ApplicationScope
-//    public FetchNewsService provideFetchNewsService(
-//            NetworkService networkService) {
-//        return new FetchNewsService(networkService);
-//    }
+
+    @Provides
+    @ApplicationScope
+    public DetailRequestService provideDetailRequestService(
+            NetworkService networkService) {
+        return new DetailRequestService(networkService);
+    }
 //
 //    @Provides
 //    @ApplicationScope

@@ -1,8 +1,13 @@
 package dietbisabesok.com.bukanitip.activity.detailrequest;
 
+import android.util.Log;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
+
+import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -10,9 +15,14 @@ import dietbisabesok.com.bukanitip.R;
 import dietbisabesok.com.bukanitip.activity.addnewoffering.AddNewOfferingActivity;
 import dietbisabesok.com.bukanitip.activity.addnewoffering.service.AddOfferingService;
 import dietbisabesok.com.bukanitip.activity.addnewrequest.AddNewRequestActivity;
+import dietbisabesok.com.bukanitip.activity.detailrequest.service.DetailRequestResponse;
+import dietbisabesok.com.bukanitip.activity.detailrequest.service.DetailRequestService;
 import dietbisabesok.com.bukanitip.activity.listoffering.ListOfferingActivity;
+import dietbisabesok.com.bukanitip.data.ListOfferingData;
 import dietbisabesok.com.bukanitip.data.RequestData;
 import dietbisabesok.com.bukanitip.helper.CurrencyHelper;
+import dietbisabesok.com.bukanitip.network.NetworkError;
+import dietbisabesok.com.bukanitip.session.LoginSession;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
 import dietbisabesok.com.bukanitip.ui.navigation.ActivityScreen;
 import dietbisabesok.com.bukanitip.ui.navigation.ActivityScreenSwitcher;
@@ -23,14 +33,22 @@ import dietbisabesok.com.bukanitip.ui.navigation.ActivityScreenSwitcher;
 
 public class DetailRequestPresenter extends ViewPresenter<DetailRequestView> {
     @Inject
-    AddOfferingService mAddOfferingService;
+    DetailRequestService mDetailRequestService;
 
     @Inject
     ActivityScreenSwitcher mActivityScreenSwitcher;
 
+    @Inject
+    LoginSession mLoginSession;
+
+    @Inject
+    Gson gson;
+
     private DetailRequestActivity mActivity;
     private RequestData mRequestData;
     private String status = null;
+    private List<ListOfferingData> mListOfferingData;
+
     public DetailRequestPresenter(DetailRequestActivity activity, RequestData requestData){
         mActivity = activity;
         mRequestData = requestData;
@@ -39,6 +57,7 @@ public class DetailRequestPresenter extends ViewPresenter<DetailRequestView> {
     @Override
     public void onLoad(){
         super.onLoad();
+        fetchDetailService(mRequestData);
         Glide.with(mActivity.getApplicationContext())
                 .load(mRequestData.img_url)
                 .placeholder(R.drawable.borobudur)
@@ -65,7 +84,29 @@ public class DetailRequestPresenter extends ViewPresenter<DetailRequestView> {
         getView().mBtnListOffer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mActivityScreenSwitcher.open(new ListOfferingActivity.Screen());
+                if (mListOfferingData != null){
+                    mActivityScreenSwitcher.open(new ListOfferingActivity.Screen(mListOfferingData));
+                }
+            }
+        });
+    }
+
+    private void fetchDetailService(RequestData requestData){
+        HashMap<String, String> mParam  = new HashMap<>();
+        mParam.put("email", mLoginSession.getEmail());
+        mParam.put("token", mLoginSession.getLoginToken());
+        mParam.put("user_id", mLoginSession.getUserID());
+        mParam.put("id_iklan", String.valueOf(requestData.id));
+        mDetailRequestService.init(mParam);
+        mDetailRequestService.fetchDetailRequest(new DetailRequestService.GetResponseCallback() {
+            @Override
+            public void onSuccess(DetailRequestResponse dataList) {
+                    mListOfferingData = dataList.mListOfferingDataList;
+            }
+
+            @Override
+            public void onError(NetworkError networkError) {
+                Log.d(getClass().getName(), networkError.getMessage());
             }
         });
     }

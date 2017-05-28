@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import dietbisabesok.com.bukanitip.activity.addnewrequest.service.AddNewRequestResponse;
 import dietbisabesok.com.bukanitip.activity.addnewoffering.service.AddOfferingResponse;
+import dietbisabesok.com.bukanitip.activity.detailrequest.service.DetailRequestResponse;
 import dietbisabesok.com.bukanitip.fragment.home.service.FetchAllCountryResponse;
 import dietbisabesok.com.bukanitip.fragment.profile.service.FetchDetailUserResponse;
 import dietbisabesok.com.bukanitip.activity.login.service.LoginResponse;
@@ -46,7 +47,7 @@ public interface NetworkService {
 
     @POST
     @FormUrlEncoded
-    Observable<CommonResponse>getDetailRequest(@Url String url, @FieldMap HashMap<String, String> data);
+    Observable<DetailRequestResponse>getDetailRequest(@Url String url, @FieldMap HashMap<String, String> data);
 
     @POST
     @FormUrlEncoded

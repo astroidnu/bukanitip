@@ -79,8 +79,8 @@ public class AddNewOfferingPresenter extends ViewPresenter<AddNewOfferingView> {
         mAddOfferingService.postNewOffering(new AddOfferingService.GetResponseCallback() {
             @Override
             public void onSuccess(AddOfferingResponse dataList) {
+                getView().setToastMsg(dataList.message).show();
                 getView().mProgressDialog.hide();
-                getView().setToastMsg(dataList.message);
                 if(!dataList.status.equals("ERROR")){
                     mActivity.finish();
                 }
@@ -89,7 +89,7 @@ public class AddNewOfferingPresenter extends ViewPresenter<AddNewOfferingView> {
             @Override
             public void onError(NetworkError networkError) {
                 getView().mProgressDialog.hide();
-                getView().setToastMsg(networkError.getMessage());
+                getView().setToastMsg(networkError.getMessage()).show();
             }
         });
     }

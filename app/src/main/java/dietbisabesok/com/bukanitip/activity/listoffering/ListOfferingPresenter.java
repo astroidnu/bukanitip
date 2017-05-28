@@ -2,6 +2,9 @@ package dietbisabesok.com.bukanitip.activity.listoffering;
 
 import android.view.View;
 
+import java.util.List;
+
+import dietbisabesok.com.bukanitip.data.ListOfferingData;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
 
 /**
@@ -10,13 +13,16 @@ import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
 
 public class ListOfferingPresenter extends ViewPresenter<ListOfferingView> {
     private ListOfferingActivity mActivity;
-    public ListOfferingPresenter(ListOfferingActivity activity){
+    private List<ListOfferingData> mListOfferingDatas;
+    public ListOfferingPresenter(ListOfferingActivity activity, List<ListOfferingData> dataList){
         mActivity = activity;
+        mListOfferingDatas = dataList;
     }
     @Override
     public void onLoad(){
         super.onLoad();
         onFinishActivity();
+        getView().setData(mListOfferingDatas);
     }
 
     private void onFinishActivity() {
