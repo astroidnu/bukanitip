@@ -50,7 +50,7 @@ public class MyRequestFragmentPresenter extends ViewPresenter<MyRequestFragmentV
         myRequestService.getMyRequestList(new MyRequestService.GetResponseCallback() {
             @Override
             public void onSuccess(MyRequestServiceResponse dataList) {
-                Log.d(getClass().getName(),gson.toJson(dataList));
+                getView().setData(dataList.myRequestDataList);
             }
 
             @Override

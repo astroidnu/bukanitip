@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_margin="16dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/my_request_imageview"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/borobudur"/>
+            <TextView
+                android:id="@+id/my_request_country_name"
+                android:padding="8dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:text="Indonesia "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/my_request_title"
+                android:textSize="12dp"
+                android:paddingLeft="8dp"
+                android:textColor="@color/colorBlack"
+                android:text="Macbook Pro 2016"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/my_request_budget"
+                android:textSize="12dp"
+                android:paddingLeft="8dp"
+                android:paddingBottom="8dp"
+                android:textColor="@color/colorBlack"
+                android:text="Rp. 200.0000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
