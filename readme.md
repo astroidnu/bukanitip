@@ -1,4 +1,4 @@
-# DB Monitoring
+# Bukanitip Android Apps
 
 This app is our project when joining Bukalapak Development Competition 2017. The main idea can be found here  https://m.youtube.com/watch?v=eYwQ2FpEkBQ
 
