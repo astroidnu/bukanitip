@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLines="1"
                     android:id="@+id/new_offering_day_estimation"
                     android:layout_width="match_parent"

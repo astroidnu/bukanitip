@@ -65,12 +65,16 @@ public class DetailRequestPresenter extends ViewPresenter<DetailRequestView> {
         getView().mRequestName.setText(mRequestData.title);
         getView().mRequestBudget.setText(CurrencyHelper.CurrencyHelper(Long.valueOf(mRequestData.budget)));
         getView().mRequestDescription.setText(mRequestData.description);
-        if(mRequestData.status == 1){
-            status = "Available for offering";
-        }else if(mRequestData.status == 2){
-            status = "Pending";
+        if(mRequestData.status_titipan == 1){
+            status = "Waiting Offering";
+        }else if(mRequestData.status_titipan == 2){
+
+        }else if(mRequestData.status_titipan == 3){
+            status = "Payment Confirmed";
+        }else if(mRequestData.status_titipan == 4){
+            status = "Package Sent from Diaspora";
         }else{
-            status = "Confirmed";
+            status = "Package Confirmed Arrived";
         }
         getView().mRequestStatus.setText(status);
         onFinishActivity();

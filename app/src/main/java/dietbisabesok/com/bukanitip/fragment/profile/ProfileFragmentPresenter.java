@@ -13,6 +13,8 @@ import dietbisabesok.com.bukanitip.activity.login.LoginScreenActivity;
 import dietbisabesok.com.bukanitip.data.User;
 import dietbisabesok.com.bukanitip.fragment.profile.service.FetchDetailUserResponse;
 import dietbisabesok.com.bukanitip.fragment.profile.service.FetchDetailUserService;
+import dietbisabesok.com.bukanitip.model.CountryDataModel;
+import dietbisabesok.com.bukanitip.model.RequestDataModel;
 import dietbisabesok.com.bukanitip.network.NetworkError;
 import dietbisabesok.com.bukanitip.session.LoginSession;
 import dietbisabesok.com.bukanitip.ui.base.ViewPresenter;
@@ -33,6 +35,12 @@ public class ProfileFragmentPresenter extends ViewPresenter<ProfileFragmentView>
     LoginSession mLoginSession;
 
     @Inject
+    CountryDataModel mCountryDataModel;
+
+    @Inject
+    RequestDataModel mRequestDataModel;
+
+    @Inject
     ActivityScreenSwitcher mACActivityScreenSwitcher;
 
     private ProfileFragment mFragment;
@@ -49,6 +57,8 @@ public class ProfileFragmentPresenter extends ViewPresenter<ProfileFragmentView>
             @Override
             public void onClick(View v) {
                 mLoginSession.clear();
+                mCountryDataModel.clear();
+                mRequestDataModel.clear();
                 mACActivityScreenSwitcher.open(new LoginScreenActivity.Screen());
 
             }
