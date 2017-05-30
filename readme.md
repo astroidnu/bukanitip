@@ -6,7 +6,7 @@ This app is our project when joining Bukalapak Development Competition 2017. The
 
 Coming Soon !
 
-##Our team consist of : 
+## Our team consist of : 
 * [Ibnu Muzakkir](https://github.com/astroidnu) - Android Developer
 * [Derta Isyajora](https://github.com/dertajora) - API Developer
 
